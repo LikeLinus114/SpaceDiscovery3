@@ -6,19 +6,19 @@
     <group android:checkableBehavior="single">
         <item
                 android:id="@+id/locate_current_position"
-                android:icon="@drawable/ic_menu_camera"
+                android:icon="@drawable/ic_location"
                 android:title="@string/locate_current_position"/>
         <item
                 android:id="@+id/map_of_galaxy"
-                android:icon="@drawable/ic_menu_gallery"
+                android:icon="@drawable/ic_map"
                 android:title="@string/map_of_galaxy"/>
         <item
                 android:id="@+id/celestial_bodies_and_satellites"
-                android:icon="@drawable/ic_menu_slideshow"
+                android:icon="@drawable/ic_planet"
                 android:title="@string/celestial_bodies_and_satellites"/>
         <item
                 android:id="@+id/connect_to_stations"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_connection"
                 android:title="@string/connect_to_stations"/>
     </group>
 
@@ -26,7 +26,7 @@
         <menu>
             <item
                     android:id="@+id/nav_share"
-                    android:icon="@drawable/ic_menu_share"
+                    android:icon="@drawable/ic_menu_manage"
                     android:title="@string/menu_share"/>
             <item
                     android:id="@+id/nav_send"
