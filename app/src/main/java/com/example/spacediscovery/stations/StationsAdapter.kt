@@ -1,14 +1,15 @@
 package com.example.spacediscovery.stations
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spacediscovery.R
+import com.example.spacediscovery.services.StationService
 
 class StationsAdapter: RecyclerView.Adapter<StationsAdapter.StationsViewHolder>() {
 
@@ -43,9 +44,9 @@ class StationsAdapter: RecyclerView.Adapter<StationsAdapter.StationsViewHolder>(
         holder.description.text = station.description
         holder.image.setImageResource(station.imageResourceId!!)
         holder.showMessagesHistory.setOnClickListener {
-            Toast.makeText(holder.itemView.context, "To be implemented", Toast.LENGTH_SHORT).show()
+            val intent = Intent(holder.itemView.context, ChatHistoryActivity::class.java)
+            holder.itemView.context.startActivity(intent)
         }
     }
-
 
 }

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spacediscovery.R
+import com.example.spacediscovery.services.CelestialBodyService
 import kotlinx.android.synthetic.main.item_celestial_body.view.*
 
 class CelestialBodiesAdapter:
