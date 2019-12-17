@@ -76,10 +76,9 @@ It is a navigation and communication module that will be used in space.
 
 1. implement messages history 
 2. implement chat
-3. replace standard menu icons with custom ones
 4. implement settings: language etc.
 5. MVVM pattern (node.js server)
-
+6. integrate dependency injection
 
 
 

@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val button: Button = findViewById(R.id.login_button)
-        button.setOnClickListener() {
+        button.setOnClickListener {
             startActivity(Intent(this@MainActivity, SidePane::class.java))
         }
     }
