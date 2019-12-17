@@ -88,4 +88,4 @@ It is a navigation and communication module that will be used in space.
 
 
 
-https://github.com/LikeLinus114/spacediscovery
+https://github.com/LikeLinus114/SpaceDiscovery3
