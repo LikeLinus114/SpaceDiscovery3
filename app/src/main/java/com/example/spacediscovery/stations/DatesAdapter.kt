@@ -24,7 +24,6 @@ class DatesAdapter: RecyclerView.Adapter<DatesAdapter.DatesViewHolder>() {
         itemView.setOnClickListener {
             val intent = Intent(it.context, ChatHistoryDetailsActivity::class.java)
             it.context.startActivity(intent)
-            Toast.makeText(it.context, "To be implemented", Toast.LENGTH_SHORT).show()
         }
         return DatesViewHolder(itemView)
     }
