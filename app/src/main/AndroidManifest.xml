@@ -28,7 +28,7 @@
                 android:name=".stations.ChatHistoryActivity">
         </activity>
         <activity
-                android:name=".stations.ChatHistoryDetailsActivity">
+                android:name=".stations.ChatDetailsActivity">
         </activity>
     </application>
 

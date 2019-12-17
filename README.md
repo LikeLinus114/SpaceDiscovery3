@@ -74,12 +74,9 @@ in the space.
 It is a navigation and communication module that will be used in space.
 
 
-1. implement messages history 
-2. implement chat
-4. implement settings: language etc.
-5. MVVM pattern (node.js server)
-6. integrate dependency injection
-
+1. MVVM pattern (node.js server)
+2. integrate dependency injection
+3. implement settings: language etc.
 
 
 

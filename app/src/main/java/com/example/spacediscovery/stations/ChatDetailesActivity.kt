@@ -4,13 +4,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spacediscovery.R
-import kotlinx.android.synthetic.main.activity_chat_history_details.*
+import kotlinx.android.synthetic.main.activity_chat_details.*
 
-class ChatHistoryDetailsActivity: AppCompatActivity() {
+class ChatDetailsActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chat_history_details)
+        setContentView(R.layout.activity_chat_details)
         messages_list.layoutManager = LinearLayoutManager(applicationContext)
         messages_list.adapter = MessagesAdapter()
     }
