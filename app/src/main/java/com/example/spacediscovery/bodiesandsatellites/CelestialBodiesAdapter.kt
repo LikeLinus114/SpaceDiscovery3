@@ -44,7 +44,7 @@ class CelestialBodiesAdapter(private var bodies: ArrayList<CelestialBody>):
         holder.type.text = CelestialBodyTypeEnum.values().find { it.id == body.type }!!.name
         holder.distance.text = body.distance.toString()
         holder.description.text = body.description.toString()
-        holder.image.setImageResource(body.imageResourceId!!)
+        holder.image.setImageBitmap(body.imageBitMap)
     }
 
 }

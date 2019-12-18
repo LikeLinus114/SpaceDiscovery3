@@ -30,7 +30,7 @@ class BodiesSatellitesFragment: Fragment(), Injectable {
         bodies_list.layoutManager = LinearLayoutManager(activity!!.applicationContext)
         bodies_list.adapter = bodiesAdapter
 
-        viewModel.fetchBodiesAndSatellites()
+        viewModel.fetchBodiesAndSatellites(this)
         observeViewModel()
     }
 
