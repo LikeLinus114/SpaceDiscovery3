@@ -1,3 +1,3 @@
-package com.example.spacediscovery.bodiesAndsatellites
+package com.example.spacediscovery.bodiesandsatellites
 
 class CelestialBody(var name: String, var type: CelestialBodyType?, var distance: Long, var description: String?, var imageResourceId: Int?)

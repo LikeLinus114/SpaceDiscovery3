@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.spacediscovery">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -31,5 +32,4 @@
                 android:name=".stations.ChatDetailsActivity">
         </activity>
     </application>
-
 </manifest>

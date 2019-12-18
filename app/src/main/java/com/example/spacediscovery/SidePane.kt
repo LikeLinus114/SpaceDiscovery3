@@ -12,9 +12,8 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
-import android.view.View
 import androidx.fragment.app.Fragment
-import com.example.spacediscovery.bodiesAndsatellites.FragmentBodiesSatellites
+import com.example.spacediscovery.bodiesandsatellites.FragmentBodiesSatellites
 import com.example.spacediscovery.chat.ChatActivity
 import com.example.spacediscovery.galaxymap.FragmentGalaxyMap
 import com.example.spacediscovery.location.FragmentLocation

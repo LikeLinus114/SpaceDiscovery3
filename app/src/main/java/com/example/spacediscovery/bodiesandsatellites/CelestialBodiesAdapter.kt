@@ -1,4 +1,4 @@
-package com.example.spacediscovery.bodiesAndsatellites
+package com.example.spacediscovery.bodiesandsatellites
 
 import android.view.LayoutInflater
 import android.view.View

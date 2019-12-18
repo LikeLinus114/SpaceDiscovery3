@@ -1,8 +1,8 @@
 package com.example.spacediscovery.services
 
 import com.example.spacediscovery.R
-import com.example.spacediscovery.bodiesAndsatellites.CelestialBody
-import com.example.spacediscovery.bodiesAndsatellites.CelestialBodyType
+import com.example.spacediscovery.bodiesandsatellites.CelestialBody
+import com.example.spacediscovery.bodiesandsatellites.CelestialBodyType
 
 class CelestialBodyService {
 
