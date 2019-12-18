@@ -84,4 +84,6 @@ It is a navigation and communication module that will be used in space.
 
 
 
-https://github.com/LikeLinus114/SpaceDiscovery3
+https://github.com/LikeLinus114/SpaceDiscovery3 - the main app
+
+https://github.com/LikeLinus114/SpaceInfoServer - the emulator of a server providing space information

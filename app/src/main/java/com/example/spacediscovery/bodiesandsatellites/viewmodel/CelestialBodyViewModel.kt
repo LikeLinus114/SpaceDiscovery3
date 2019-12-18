@@ -9,8 +9,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class CelestialBodyViewModel(var api: CelestialBodyApi): ViewModel() {
+class CelestialBodyViewModel @Inject constructor(var api: CelestialBodyApi): ViewModel() {
 
     val disposable = CompositeDisposable()
     val loading = MutableLiveData<Boolean>()

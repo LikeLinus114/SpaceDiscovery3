@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import androidx.fragment.app.Fragment
-import com.example.spacediscovery.bodiesandsatellites.FragmentBodiesSatellites
+import com.example.spacediscovery.bodiesandsatellites.BodiesSatellitesFragment
 import com.example.spacediscovery.chat.ChatActivity
 import com.example.spacediscovery.galaxymap.FragmentGalaxyMap
 import com.example.spacediscovery.location.FragmentLocation
@@ -88,7 +88,7 @@ class SidePane : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
                 openSection(FragmentGalaxyMap())
             }
             R.id.celestial_bodies_and_satellites -> {
-                openSection(FragmentBodiesSatellites())
+                openSection(BodiesSatellitesFragment())
             }
             R.id.connect_to_stations -> {
                 openSection(FragmentStations())
