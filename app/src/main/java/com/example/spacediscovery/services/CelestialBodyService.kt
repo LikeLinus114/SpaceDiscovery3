@@ -14,8 +14,7 @@ class CelestialBodyService {
         fun prepareBodiesData(bodies: List<CelestialBody>): List<CelestialBody> {
             bodies.forEach {
                 if (it.type == null) {
-                    it.type =
-                        CelestialBodyTypeEnum.UNKNOWN.id
+                    it.type = CelestialBodyTypeEnum.UNKNOWN.id
                 }
                 if (it.description == null) {
                     it.description = "unknown"

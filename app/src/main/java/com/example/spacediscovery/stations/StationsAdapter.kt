@@ -46,7 +46,7 @@ class StationsAdapter(private var stations: ArrayList<Station>): RecyclerView.Ad
     override fun onBindViewHolder(holder: StationsViewHolder, position: Int) {
         val station: Station = stations[position]
         holder.name.text = station.name
-        holder.type.text = station.type!!.name
+        holder.type.text = StationTypeEnum.values().find { it.id == station.type }!!.name
         holder.distance.text = station.distance.toString()
         holder.signalQuality.text = station.signalQuality.toString()
         holder.description.text = station.description

@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 
 class Station(
     var name: String,
-    var type: StationTypeEnum?,
+    var type: Int?,
     var distance: Long,
     var signalQuality: String?,
     var description: String?,

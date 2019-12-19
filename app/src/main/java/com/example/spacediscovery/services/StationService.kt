@@ -14,8 +14,7 @@ class StationService {
         fun prepareStationsData(stations: List<Station>): List<Station> {
             stations.forEach {
                 if (it.type == null) {
-                    it.type =
-                        StationTypeEnum.UNKNOWN
+                    it.type = StationTypeEnum.UNKNOWN.id
                 }
                 if (it.signalQuality == null) {
                     it.signalQuality = "unknown"

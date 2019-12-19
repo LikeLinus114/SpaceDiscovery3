@@ -25,13 +25,6 @@ It allows users to:
 -- b) GUI features;
 -- c) best practices in android development;
 
-
-===TIPS===
-
-it's better to use ListView (RecyclerView) and custom adapters (Adapter class) for enumerations displaying https://o7planning.org/ru/10435/android-listview-tutorial
-
-ViewModel, API, MVVM pattern, Retrofit 2, Dagger
-
 	
 	==TASKS==
 
@@ -54,14 +47,6 @@ last updating, quality of connection with the satellites (based on the statistic
  3.3 -- create Service containing local info for items
 -->> messages history is a separate class, it'll be opened with the button. Also prepareData() methods in both cases should be simplified
 
-after creation the layouts mentioned above we should create architecture schemes to determine the functions that have to be implemented by the remote servers and the ones that have to be implemented in our app.
-Therefore create the list of remote servers and find out how to emulate them.
-after that emulate them.
-
-
-
-
-
 
 
 
@@ -74,10 +59,9 @@ in the space.
 It is a navigation and communication module that will be used in space.
 
 
-1. MVVM pattern (node.js server)
-2. integrate dependency injection
+1. prepare chat for an Angular app.
+2. create an Angular app.
 3. implement settings: language etc.
-
 
 
 
