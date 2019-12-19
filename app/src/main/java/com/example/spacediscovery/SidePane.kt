@@ -17,7 +17,7 @@ import com.example.spacediscovery.bodiesandsatellites.BodiesSatellitesFragment
 import com.example.spacediscovery.chat.ChatActivity
 import com.example.spacediscovery.galaxymap.FragmentGalaxyMap
 import com.example.spacediscovery.location.FragmentLocation
-import com.example.spacediscovery.stations.FragmentStations
+import com.example.spacediscovery.stations.StationsFragment
 
 class SidePane : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -91,7 +91,7 @@ class SidePane : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
                 openSection(BodiesSatellitesFragment())
             }
             R.id.connect_to_stations -> {
-                openSection(FragmentStations())
+                openSection(StationsFragment())
             }
             R.id.nav_share -> {
 

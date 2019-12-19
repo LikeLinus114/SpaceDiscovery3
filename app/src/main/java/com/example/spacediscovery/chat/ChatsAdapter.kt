@@ -36,7 +36,7 @@ class ChatsAdapter: RecyclerView.Adapter<ChatsAdapter.ChatsViewHolder>() {
 
     override fun onBindViewHolder(holder: ChatsViewHolder, position: Int) {
         val chat = ChatsService.currentChats[position]
-        holder.stationIcon.setImageResource(chat.station.imageResourceId!!)
+        holder.stationIcon.setImageBitmap(chat.station.imageBitMap)
         holder.stationName.text = chat.station.name
         holder.time.text = chat.lastMessage.time.toString()
         holder.message.text = chat.lastMessage.text

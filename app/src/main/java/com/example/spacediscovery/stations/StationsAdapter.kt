@@ -9,9 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spacediscovery.R
-import com.example.spacediscovery.services.StationService
 
-class StationsAdapter: RecyclerView.Adapter<StationsAdapter.StationsViewHolder>() {
+class StationsAdapter(private var stations: ArrayList<Station>): RecyclerView.Adapter<StationsAdapter.StationsViewHolder>() {
 
     class StationsViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
@@ -31,18 +30,27 @@ class StationsAdapter: RecyclerView.Adapter<StationsAdapter.StationsViewHolder>(
         return StationsViewHolder(itemView)
     }
 
+    fun updateStations(newStations: List<Station>) {
+        stations.clear()
+        stations.addAll(newStations)
+        newStations.forEach {
+            println(it.imageBitMap)
+        }
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int {
-        return StationService.preparedStations.size
+        return stations.size
     }
 
     override fun onBindViewHolder(holder: StationsViewHolder, position: Int) {
-        val station: Station = StationService.preparedStations[position]
+        val station: Station = stations[position]
         holder.name.text = station.name
         holder.type.text = station.type!!.name
         holder.distance.text = station.distance.toString()
         holder.signalQuality.text = station.signalQuality.toString()
         holder.description.text = station.description
-        holder.image.setImageResource(station.imageResourceId!!)
+        holder.image.setImageBitmap(station.imageBitMap)
         holder.showMessagesHistory.setOnClickListener {
             val intent = Intent(holder.itemView.context, ChatHistoryActivity::class.java)
             holder.itemView.context.startActivity(intent)

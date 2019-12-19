@@ -1,88 +1,21 @@
 package com.example.spacediscovery.services
 
+import android.graphics.BitmapFactory
+import com.example.spacediscovery.ApplicationContext
 import com.example.spacediscovery.R
 import com.example.spacediscovery.stations.Station
-import com.example.spacediscovery.stations.StationType
+import com.example.spacediscovery.stations.StationTypeEnum
+import java.util.*
 
 class StationService {
 
     companion object {
 
-        val preparedStations =
-            prepareStationsData(
-                createStations()
-            )
-
-        private fun createStations(): List<Station> {
-            return listOf(
-                Station(
-                    "Artur-45",
-                    StationType.ARTIFICIAL_SATELLITE,
-                    100,
-                    null,
-                    "artificial satellite of the Mars",
-                    R.drawable.space_satellite
-                ),
-                Station(
-                    "Vedder-84",
-                    StationType.ARTIFICIAL_SATELLITE,
-                    200,
-                    "80%",
-                    "artificial satellite of the Venus",
-                    R.drawable.space_satellite8
-                ),
-                Station(
-                    "Rock-20",
-                    StationType.SPACE_STATION,
-                    100,
-                    null,
-                    "industrial space station",
-                    R.drawable.space_station
-                ),
-                Station(
-                    "Rock-71",
-                    StationType.SPACE_STATION,
-                    100,
-                    null,
-                    "industrial space station",
-                    R.drawable.space_station2
-                ),
-                Station(
-                    "Rock-34",
-                    StationType.SPACE_STATION,
-                    100,
-                    null,
-                    "industrial space station",
-                    R.drawable.space_station3
-                ),
-                Station(
-                    "Rock-48",
-                    StationType.SPACE_STATION,
-                    100,
-                    null,
-                    "industrial space station",
-                    R.drawable.space_station4
-                ),
-                Station(
-                    "Red Ranger",
-                    StationType.SPACE_SHIP,
-                    100,
-                    null,
-                    "Spaceship-researcher of the solar system",
-                    R.drawable.spaceship1
-                ),
-                Station(
-                    "RAD", null, 400, null,
-                    null, null
-                )
-            )
-        }
-
-        private fun prepareStationsData(stations: List<Station>): List<Station> {
+        fun prepareStationsData(stations: List<Station>): List<Station> {
             stations.forEach {
                 if (it.type == null) {
                     it.type =
-                        StationType.UNKNOWN
+                        StationTypeEnum.UNKNOWN
                 }
                 if (it.signalQuality == null) {
                     it.signalQuality = "unknown"
@@ -90,8 +23,11 @@ class StationService {
                 if (it.description == null) {
                     it.description = "unknown"
                 }
-                if (it.imageResourceId == null) {
-                    it.imageResourceId = R.drawable.no_image_available
+                if (it.encodedImage == null) {
+                    it.imageBitMap = BitmapFactory.decodeResource(ApplicationContext.getContext().resources, R.drawable.no_image_available)
+                } else {
+                    val byteArray = Base64.getMimeDecoder().decode(it.encodedImage)
+                    it.imageBitMap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
                 }
             }
             return stations

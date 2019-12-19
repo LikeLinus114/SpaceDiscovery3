@@ -1,41 +1,41 @@
-package com.example.spacediscovery.bodiesandsatellites.viewmodel
+package com.example.spacediscovery.stations.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.spacediscovery.bodiesandsatellites.CelestialBody
-import com.example.spacediscovery.bodiesandsatellites.api.CelestialBodyApi
-import com.example.spacediscovery.services.CelestialBodyService
+import com.example.spacediscovery.services.StationService
+import com.example.spacediscovery.stations.Station
+import com.example.spacediscovery.stations.api.StationsApi
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class CelestialBodyViewModel @Inject constructor(var api: CelestialBodyApi): ViewModel() {
+class StationViewModel @Inject constructor(var api: StationsApi): ViewModel() {
 
     val disposable = CompositeDisposable()
     val loading = MutableLiveData<Boolean>()
 
-    val celestialBodies = MutableLiveData<List<CelestialBody>>()
+    val stations = MutableLiveData<List<Station>>()
     val error = MutableLiveData<Boolean>()
 
-    fun fetchBodiesAndSatellites() {
+    fun fetchStations() {
         loading.value = true
         disposable.add(
-            api.getBodiesAndSatellites()
+            api.getStations()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object: DisposableSingleObserver<List<CelestialBody>>() {
-                    override fun onSuccess(receivedBodies: List<CelestialBody>) {
-                        Log.i("Celestial Body ViewModel", "Celestial bodies have been received successfully")
-                        celestialBodies.value = CelestialBodyService.prepareBodiesData(receivedBodies)
+                .subscribeWith(object: DisposableSingleObserver<List<Station>>() {
+                    override fun onSuccess(receivedStations: List<Station>) {
+                        Log.i("Station ViewModel", "Stations have been received successfully")
+                        stations.value = StationService.prepareStationsData(receivedStations)
                         error.value = false
                         loading.value = false
                     }
 
                     override fun onError(e: Throwable) {
-                        Log.e("Celestial Body ViewModel", "Celestial bodies receiving error", e)
+                        Log.e("Station ViewModel", "Stations receiving error", e)
                         error.value = true
                         loading.value = false
                     }

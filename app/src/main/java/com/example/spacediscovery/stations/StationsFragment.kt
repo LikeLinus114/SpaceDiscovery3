@@ -1,4 +1,4 @@
-package com.example.spacediscovery.bodiesandsatellites
+package com.example.spacediscovery.stations
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,37 +8,37 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spacediscovery.R
-import com.example.spacediscovery.bodiesandsatellites.viewmodel.CelestialBodyViewModel
 import com.example.spacediscovery.di.Injectable
-import com.example.spacediscovery.services.CelestialBodyService
-import kotlinx.android.synthetic.main.fragment_bodies_satellites.*
+import com.example.spacediscovery.services.StationService
+import com.example.spacediscovery.stations.viewmodel.StationViewModel
+import kotlinx.android.synthetic.main.fragment_stations.*
 import javax.inject.Inject
 
-class BodiesSatellitesFragment: Fragment(), Injectable {
+class StationsFragment: Fragment(), Injectable {
 
     @Inject
-    lateinit var viewModel: CelestialBodyViewModel
+    lateinit var viewModel: StationViewModel
 
-    private lateinit var bodiesAdapter: CelestialBodiesAdapter
+    private lateinit var stationsAdapter: StationsAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_bodies_satellites, container, false)
+        return inflater.inflate(R.layout.fragment_stations, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bodiesAdapter = CelestialBodiesAdapter(arrayListOf())
-        bodies_list.layoutManager = LinearLayoutManager(activity!!.applicationContext)
-        bodies_list.adapter = bodiesAdapter
+        stationsAdapter = StationsAdapter(arrayListOf())
+        stations_list.layoutManager = LinearLayoutManager(activity!!.applicationContext)
+        stations_list.adapter = stationsAdapter
 
-        viewModel.fetchBodiesAndSatellites()
+        viewModel.fetchStations()
         observeViewModel()
     }
 
     private fun observeViewModel() {
-        viewModel.celestialBodies.observe(this, Observer { bodies ->
-            val preparedBodies = CelestialBodyService.prepareBodiesData(bodies)
-            bodiesAdapter.updateBodies(preparedBodies)
+        viewModel.stations.observe(this, Observer { stations ->
+            val preparedStations = StationService.prepareStationsData(stations)
+            stationsAdapter.updateStations(preparedStations)
         })
         viewModel.loading.observe(this, Observer { loading ->
             loading?.let { /*enableSpinner(it)*/ }
