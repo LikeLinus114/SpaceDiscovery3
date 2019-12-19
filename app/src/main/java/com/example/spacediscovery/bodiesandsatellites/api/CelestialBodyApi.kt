@@ -11,7 +11,4 @@ interface CelestialBodyApi {
     @GET("bodies_and_satellites")
     fun getBodiesAndSatellites(): Single<List<CelestialBody>>
 
-    @GET("bodies_and_satellites/{imageUrl}")
-    fun getCelestialBodyImage(@Path("imageUrl") imageUrl: String): Single<ResponseBody>
-
 }

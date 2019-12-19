@@ -15,6 +15,9 @@ class CelestialBodiesAdapter(private var bodies: ArrayList<CelestialBody>):
     fun updateBodies(newBodies: List<CelestialBody>) {
         bodies.clear()
         bodies.addAll(newBodies)
+        newBodies.forEach {
+            println(it.imageBitMap)
+        }
         notifyDataSetChanged()
     }
 
