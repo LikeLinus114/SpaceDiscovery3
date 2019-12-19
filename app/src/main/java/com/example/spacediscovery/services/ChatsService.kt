@@ -1,5 +1,6 @@
 package com.example.spacediscovery.services
 
+import com.example.spacediscovery.ApplicationContext
 import com.example.spacediscovery.chat.Chat
 
 class ChatsService {
