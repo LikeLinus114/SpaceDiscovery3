@@ -17,7 +17,7 @@
 
     <com.google.android.material.navigation.NavigationView
             android:id="@+id/nav_view"
-            android:background="@drawable/gradient_color"
+            android:background="@drawable/main_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="-65dp"

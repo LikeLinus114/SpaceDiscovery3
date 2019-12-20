@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:background="@drawable/gradient_color">
+        android:background="@drawable/main_background">
     <TextView
             android:id="@+id/section_name"
             android:text="@string/locate_current_position"
