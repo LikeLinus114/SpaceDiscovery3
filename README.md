@@ -26,30 +26,6 @@ It allows users to:
 -- c) best practices in android development;
 
 	
-	==TASKS==
-
-1. location UI (the map of the solar system with the indicator showing our location, textviews on the side pane:
-last updating, quality of connection with the satellites (based on the statistics of queries and successful responses))
--->> +- (dummy map and TextView data have been created. Find out how Google map navigator works and if it is possible to do the same with Space map. Maybe, there's already something like this)
-
-2. map of galaxy UI (map of the galaxy, possibility to set the indicator manually, date of the last update, status of the update request if any, update button (blocked if update has been requested))
--->> +- (dummy map and TextView data have been created. Consider how to further develop this section)		  
-
-3. celestial bodies and satellites UI (list of bodies and satellites, possibility to click on one of them and navigate to the location section where it is displayed on the solar system interactive map)
- 3.1 -- create item fragment with body type, name, its description and distance+
- 3.2 -- create RecyclerView to manage items+
- 3.3 -- create Service containing local info for items+
--->> +- (list created. Find out how Google map navigator works and if it is possible to do the same with Space map. Maybe, there's already something like this)
-
-4. stations UI (list of the stations (space stations, planet bases, spaceships etc. - anything accessible to connect))
- 3.1 -- create item fragment with type of station, name, its description and quality of communication, messages history
- 3.2 -- create RecyclerView to manage items
- 3.3 -- create Service containing local info for items
--->> messages history is a separate class, it'll be opened with the button. Also prepareData() methods in both cases should be simplified
-
-
-
-
 
 The application can be used for communication and navigation when flying in spaceship in the Solar System. It is perspective application. Current technologies don't allow using things like that because
 space flight is still an experiment and not being churned out. As for the current situation, the application can be used as space communication and navigation simulator in thematic phone games.
@@ -61,7 +37,7 @@ It is a navigation and communication module that will be used in space.
 
 
 
-
+1. create description fragment.
 
 
 
@@ -98,3 +74,5 @@ There's an important information about connection between two android apps for c
 		The server notifies device B that a message is available for it (using some sort of message notification like Google Cloud Messaging for example, or simply by the devices polling regularly to see if they have any messages).
 		Device B retrieves the messages from the server
 "
+
+or we can prepare each app as a server and client together. In this case, we need to make the Android app work as an http-server: https://github.com/NanoHttpd/nanohttpd

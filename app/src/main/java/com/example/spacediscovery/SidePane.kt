@@ -15,8 +15,8 @@ import android.view.Menu
 import androidx.fragment.app.Fragment
 import com.example.spacediscovery.bodiesandsatellites.BodiesSatellitesFragment
 import com.example.spacediscovery.chat.ChatActivity
-import com.example.spacediscovery.galaxymap.FragmentGalaxyMap
-import com.example.spacediscovery.location.FragmentLocation
+import com.example.spacediscovery.galaxymap.GalaxyMapFragment
+import com.example.spacediscovery.location.LocationFragment
 import com.example.spacediscovery.stations.StationsFragment
 
 class SidePane : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -45,6 +45,7 @@ class SidePane : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
+        openSection(DescriptionFragment())
         navView.setNavigationItemSelectedListener(this)
     }
 
@@ -82,10 +83,10 @@ class SidePane : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         when (item.itemId) {
             R.id.locate_current_position -> {
                 // Handle the camera action
-                openSection(FragmentLocation())
+                openSection(LocationFragment())
             }
             R.id.map_of_galaxy -> {
-                openSection(FragmentGalaxyMap())
+                openSection(GalaxyMapFragment())
             }
             R.id.celestial_bodies_and_satellites -> {
                 openSection(BodiesSatellitesFragment())
