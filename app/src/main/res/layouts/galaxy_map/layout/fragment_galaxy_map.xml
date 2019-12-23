@@ -24,6 +24,7 @@
         <TextView
                 android:id="@+id/last_update_label"
                 android:text="Last updated:"
+                android:textColor="@color/colorViolet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
@@ -35,11 +36,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="[date of the last update]"
+                android:textColor="@color/colorViolet"
                 app:layout_constraintStart_toEndOf="@id/last_update_label"
                 app:layout_constraintTop_toTopOf="@id/last_update_label" />
         <TextView
                 android:id="@+id/update_request_status_label"
                 android:text="Status of the update request:"
+                android:textColor="@color/colorViolet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -51,12 +54,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="[status]"
+                android:textColor="@color/colorViolet"
                 app:layout_constraintStart_toStartOf="@+id/last_update"
                 app:layout_constraintTop_toTopOf="@id/update_request_status_label" />
 
         <Button
                 android:id="@+id/update_button"
                 android:text="update"
+                android:textColor="@color/colorYellow"
+                android:background="@drawable/button_background"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"

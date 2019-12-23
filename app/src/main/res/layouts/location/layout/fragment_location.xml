@@ -27,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Last updated:"
+                android:textColor="@color/colorViolet"
                 app:layout_constraintEnd_toEndOf="@id/connection_rates_label"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="[date of the last update]"
+                android:textColor="@color/colorViolet"
                 app:layout_constraintStart_toEndOf="@id/last_update_label"
                 app:layout_constraintTop_toTopOf="@+id/last_update_label" />
 
@@ -44,6 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Connection rates:"
+                android:textColor="@color/colorViolet"
                 android:layout_marginTop="6dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/last_update_label" />
@@ -53,6 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="[connection rates %]"
+                android:textColor="@color/colorViolet"
                 app:layout_constraintStart_toStartOf="@id/last_update"
                 app:layout_constraintTop_toTopOf="@id/connection_rates_label" />
 

@@ -14,7 +14,7 @@
             android:text="Space Discovery"
             android:textSize="40dp"
             android:textStyle="bold"
-            android:textColor="#CA6F1E"
+            android:textColor="@color/colorYellowDark"
             app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -38,7 +38,7 @@
                 \n   - look at the map of the galaxy;
                 \n   - get information about celestial bodies.
                 \n\nYou can select required item in the menu on the top left."
-            android:textColor="#D35400"
+            android:textColor="@color/colorOrange"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent" />

@@ -29,6 +29,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:text="[name]"
+            android:textColor="@color/colorYellow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,11 +50,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Type:"
+                android:textColor="@color/colorYellow"
                 app:layout_constraintEnd_toEndOf="@+id/textView7"
                 app:layout_constraintTop_toTopOf="parent" />
         <TextView
                 android:id="@+id/station_type"
                 android:text="[type]"
+                android:textColor="@color/colorYellow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toEndOf="@+id/textView5" android:layout_marginStart="8dp"
@@ -62,6 +65,7 @@
         <TextView
                 android:id="@+id/textView7"
                 android:text="Distance:"
+                android:textColor="@color/colorYellow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/textView5"
@@ -69,6 +73,7 @@
         <TextView
                 android:id="@+id/station_distance"
                 android:text="[distance]"
+                android:textColor="@color/colorYellow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="@+id/textView7" app:layout_constraintStart_toEndOf="@+id/textView7"
@@ -76,6 +81,7 @@
         <TextView
                 android:id="@+id/textView8"
                 android:text="Signal quality:"
+                android:textColor="@color/colorYellow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -84,6 +90,7 @@
         <TextView
                 android:id="@+id/station_signal_quality"
                 android:text="[signal quality]"
+                android:textColor="@color/colorYellow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="@+id/textView8" app:layout_constraintStart_toEndOf="@+id/textView8"
@@ -95,6 +102,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="6dp"
                 android:text="Show messages history"
+                android:textColor="@color/colorYellow"
+                android:background="@drawable/button2_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/station_signal_quality" />
@@ -107,6 +116,7 @@
             android:layout_height="wrap_content"
             android:justificationMode="inter_word"
             android:text="[description]"
+            android:textColor="@color/colorYellow"
             android:layout_marginTop="10dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
