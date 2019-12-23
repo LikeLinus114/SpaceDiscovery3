@@ -7,7 +7,7 @@
         <item
                 android:id="@+id/locate_current_position"
                 android:icon="@drawable/ic_location"
-                android:title="@string/locate_current_position"/>
+                android:title="@string/locate_current_position" />
         <item
                 android:id="@+id/map_of_galaxy"
                 android:icon="@drawable/ic_map"
