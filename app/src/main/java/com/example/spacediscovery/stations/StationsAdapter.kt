@@ -9,6 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spacediscovery.R
+import java.util.*
+import kotlin.collections.ArrayList
 
 class StationsAdapter(private var stations: ArrayList<Station>): RecyclerView.Adapter<StationsAdapter.StationsViewHolder>() {
 
@@ -46,7 +48,12 @@ class StationsAdapter(private var stations: ArrayList<Station>): RecyclerView.Ad
     override fun onBindViewHolder(holder: StationsViewHolder, position: Int) {
         val station: Station = stations[position]
         holder.name.text = station.name
-        holder.type.text = StationTypeEnum.values().find { it.id == station.type }!!.name
+        holder.type.text = StationTypeEnum
+            .values()
+            .find { it.id == station.type }!!
+            .name
+            .toLowerCase(Locale.getDefault())
+            .replace("_"," ")
         holder.distance.text = station.distance.toString()
         holder.signalQuality.text = station.signalQuality.toString()
         holder.description.text = station.description

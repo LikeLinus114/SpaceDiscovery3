@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spacediscovery.R
 import kotlinx.android.synthetic.main.item_celestial_body.view.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class CelestialBodiesAdapter(private var bodies: ArrayList<CelestialBody>):
     RecyclerView.Adapter<CelestialBodiesAdapter.CelestialBodyViewHolder>() {
@@ -44,7 +46,11 @@ class CelestialBodiesAdapter(private var bodies: ArrayList<CelestialBody>):
     override fun onBindViewHolder(holder: CelestialBodyViewHolder, position: Int) {
         val body: CelestialBody = bodies[position]
         holder.name.text = body.name
-        holder.type.text = CelestialBodyTypeEnum.values().find { it.id == body.type }!!.name
+        holder.type.text = CelestialBodyTypeEnum
+            .values()
+            .find { it.id == body.type }!!
+            .name
+            .toLowerCase(Locale.getDefault())
         holder.distance.text = body.distance.toString()
         holder.description.text = body.description.toString()
         holder.image.setImageBitmap(body.imageBitMap)
