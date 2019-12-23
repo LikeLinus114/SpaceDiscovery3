@@ -62,7 +62,7 @@
                 android:id="@+id/update_button"
                 android:text="update"
                 android:textColor="@color/colorYellow"
-                android:background="@drawable/button_background"
+                android:background="@drawable/button_selector"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"

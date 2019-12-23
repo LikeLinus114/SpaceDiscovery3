@@ -100,7 +100,7 @@
                 android:layout_marginTop="6dp"
                 android:text="Show messages history"
                 android:textColor="@color/colorYellow"
-                android:background="@drawable/button2_background"
+                android:background="@drawable/button2_selector"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/station_signal_quality" />
