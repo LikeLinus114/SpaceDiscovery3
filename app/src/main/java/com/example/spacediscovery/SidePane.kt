@@ -29,13 +29,18 @@ class SidePane : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         setSupportActionBar(toolbar)
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
+        var snackbar: Snackbar? = null
         fab.setOnClickListener { view ->
-            val snackbar = Snackbar.make(view, "No new messages", Snackbar.LENGTH_INDEFINITE)
-            snackbar.setAction("Go to chat") {
-                snackbar.dismiss()
-                startActivity(Intent(this, ChatActivity::class.java))
+            if (snackbar != null && snackbar!!.isShown) {
+                snackbar!!.dismiss()
+            } else {
+                snackbar = Snackbar.make(view, "No new messages", Snackbar.LENGTH_INDEFINITE)
+                snackbar!!.setAction("Go to chat") {
+                    snackbar!!.dismiss()
+                    startActivity(Intent(this, ChatActivity::class.java))
+                }
+                snackbar!!.show()
             }
-            snackbar.show()
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)

@@ -37,9 +37,6 @@ It is a navigation and communication module that will be used in space.
 
 
 
-2. unify fonts
-3. align the tiles content in the recyclerviews
-
 
 
 //All the further tasks are a serios scientific research. It's time-consuming and there are no guarantees of success. 
