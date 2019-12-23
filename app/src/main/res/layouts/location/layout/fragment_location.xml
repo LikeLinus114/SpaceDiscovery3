@@ -13,55 +13,48 @@
             android:layout_height="200dp"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="70dp"/>
-    <TextView
-            android:id="@+id/last_update_label"
-            android:text="Last updated:"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            app:layout_anchor="@+id/solar_system_map"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/solar_system_map"
-            app:layout_constraintHorizontal_bias="0.369"
-            android:layout_marginTop="12dp"/>
-    <TextView
-            android:id="@+id/last_update"
-            android:text="[date of the last update]"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="10dp"
-            android:paddingTop="5dp"
-            app:layout_anchorGravity="end|center"
-            app:layout_anchor="@+id/last_update_label"
             android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@+id/solar_system_map" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.846"/>
-    <TextView
-            android:id="@+id/connection_rates_label"
-            android:text="Connection rates:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:paddingTop="5dp"
-            app:layout_anchorGravity="end|bottom"
-            app:layout_anchor="@+id/last_update_label"
-            app:layout_constraintTop_toBottomOf="@+id/last_update_label"
-            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.303"/>
-    <TextView
-            android:text="[connection rates %]"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
-            android:paddingStart="10dp"
-            android:paddingTop="5dp"
-            app:layout_anchorGravity="end|center"
-            app:layout_anchor="@+id/connection_rates_label"
-            app:layout_constraintTop_toBottomOf="@+id/last_update"
-            android:id="@+id/textView3"
-            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.773"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/solar_system_map">
+
+        <TextView
+                android:id="@+id/last_update_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last updated:"
+                app:layout_constraintEnd_toEndOf="@id/connection_rates_label"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+                android:id="@+id/last_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="[date of the last update]"
+                app:layout_constraintStart_toEndOf="@id/last_update_label"
+                app:layout_constraintTop_toTopOf="@+id/last_update_label" />
+
+        <TextView
+                android:id="@+id/connection_rates_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Connection rates:"
+                android:layout_marginTop="6dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/last_update_label" />
+
+        <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[connection rates %]"
+                app:layout_constraintStart_toStartOf="@id/last_update"
+                app:layout_constraintTop_toTopOf="@id/connection_rates_label" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

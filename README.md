@@ -37,7 +37,6 @@ It is a navigation and communication module that will be used in space.
 
 
 
-1. toolbars overlap the underlying content
 2. unify fonts
 3. align the tiles content in the recyclerviews
 
