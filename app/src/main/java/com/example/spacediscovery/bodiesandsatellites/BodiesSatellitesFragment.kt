@@ -11,6 +11,7 @@ import com.example.spacediscovery.R
 import com.example.spacediscovery.bodiesandsatellites.viewmodel.CelestialBodyViewModel
 import com.example.spacediscovery.di.Injectable
 import com.example.spacediscovery.services.CelestialBodyService
+import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.android.synthetic.main.fragment_bodies_satellites.*
 import javax.inject.Inject
 
@@ -27,6 +28,7 @@ class BodiesSatellitesFragment: Fragment(), Injectable {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity!!.toolbar!!.title = resources.getString(R.string.celestial_bodies_and_satellites)
         bodiesAdapter = CelestialBodiesAdapter(arrayListOf())
         bodies_list.layoutManager = LinearLayoutManager(activity!!.applicationContext)
         bodies_list.adapter = bodiesAdapter

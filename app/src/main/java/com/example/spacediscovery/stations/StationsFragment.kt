@@ -11,6 +11,7 @@ import com.example.spacediscovery.R
 import com.example.spacediscovery.di.Injectable
 import com.example.spacediscovery.services.StationService
 import com.example.spacediscovery.stations.viewmodel.StationViewModel
+import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.android.synthetic.main.fragment_stations.*
 import javax.inject.Inject
 
@@ -27,6 +28,7 @@ class StationsFragment: Fragment(), Injectable {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity!!.toolbar!!.title = resources.getString(R.string.stations)
         stationsAdapter = StationsAdapter(arrayListOf())
         stations_list.layoutManager = LinearLayoutManager(activity!!.applicationContext)
         stations_list.adapter = stationsAdapter

@@ -20,7 +20,7 @@ class StationService {
                     it.signalQuality = "unknown"
                 }
                 if (it.description == null) {
-                    it.description = "unknown"
+                    it.description = "Description: unknown"
                 }
                 if (it.encodedImage == null) {
                     it.imageBitMap = BitmapFactory.decodeResource(ApplicationContext.getContext().resources, R.drawable.no_image_available)

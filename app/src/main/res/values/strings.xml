@@ -15,6 +15,7 @@
     <string name="map_of_galaxy">The map of the galaxy</string>
     <string name="celestial_bodies_and_satellites">Celestial bodies and satellites</string>
     <string name="connect_to_stations">Connect to the nearest stations</string>
+    <string name="stations">Stations</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 </resources>
