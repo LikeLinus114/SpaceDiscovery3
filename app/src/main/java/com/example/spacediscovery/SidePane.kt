@@ -74,6 +74,10 @@ class SidePane : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
+            R.id.home -> {
+                openSection(DescriptionFragment())
+                true
+            }
             R.id.action_logout -> {
                 finish()
                 true
