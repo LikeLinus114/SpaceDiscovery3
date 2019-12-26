@@ -45,8 +45,10 @@ class BodiesSatellitesFragment: Fragment(), Injectable {
             bodiesAdapter.updateBodies(preparedBodies)
             if (preparedBodies.isEmpty()) {
                 no_bodies_label.visibility = View.VISIBLE
+                no_bodies_image.visibility = View.VISIBLE
             } else {
                 no_bodies_label.visibility = View.INVISIBLE
+                no_bodies_image.visibility = View.INVISIBLE
             }
         })
         viewModel.loading.observe(this, Observer { loading ->
@@ -56,6 +58,7 @@ class BodiesSatellitesFragment: Fragment(), Injectable {
             error?.let {
                 if (it) {
                     no_bodies_label.visibility = View.VISIBLE
+                    no_bodies_image.visibility = View.VISIBLE
                     Toast.makeText(this.context, "could not load the celestial bodies info", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -67,6 +70,7 @@ class BodiesSatellitesFragment: Fragment(), Injectable {
             loading_spinner.visibility = View.VISIBLE
             shadow_view.visibility = View.VISIBLE
             no_bodies_label.visibility = View.INVISIBLE
+            no_bodies_image.visibility = View.INVISIBLE
         } else {
             loading_spinner.visibility = View.GONE
             shadow_view.visibility = View.GONE

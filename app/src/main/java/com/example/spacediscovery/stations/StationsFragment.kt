@@ -44,8 +44,10 @@ class StationsFragment: Fragment(), Injectable {
             stationsAdapter.updateStations(preparedStations)
             if (preparedStations.isEmpty()) {
                 no_stations_label.visibility = View.VISIBLE
+                no_stations_image.visibility = View.VISIBLE
             } else {
                 no_stations_label.visibility = View.INVISIBLE
+                no_stations_image.visibility = View.INVISIBLE
             }
         })
         viewModel.loading.observe(this, Observer { loading ->
@@ -55,6 +57,7 @@ class StationsFragment: Fragment(), Injectable {
             error?.let {
                 if (it) {
                     no_stations_label.visibility = View.VISIBLE
+                    no_stations_image.visibility = View.VISIBLE
                     Toast.makeText(this.context, "could not load the stations info", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -66,6 +69,7 @@ class StationsFragment: Fragment(), Injectable {
             loading_spinner.visibility = View.VISIBLE
             shadow_view.visibility = View.VISIBLE
             no_stations_label.visibility = View.INVISIBLE
+            no_stations_image.visibility = View.INVISIBLE
         } else {
             loading_spinner.visibility = View.GONE
             shadow_view.visibility = View.GONE
