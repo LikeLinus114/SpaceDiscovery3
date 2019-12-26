@@ -13,7 +13,7 @@ class MessagesAdapter: RecyclerView.Adapter<MessagesAdapter.MessagesViewHolder>(
     class MessagesViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
         val message: TextView = view.findViewById(R.id.message)
-        val author: TextView = view.findViewById(R.id.author)
+        val sender: TextView = view.findViewById(R.id.sender)
         val time: TextView = view.findViewById(R.id.time)
 
     }
@@ -29,7 +29,7 @@ class MessagesAdapter: RecyclerView.Adapter<MessagesAdapter.MessagesViewHolder>(
     override fun onBindViewHolder(holder: MessagesViewHolder, position: Int) {
         val message = MessagesService.messages[position]
         holder.message.text = message.text
-        holder.author.text = message.author
+        holder.sender.text = message.sender
         holder.time.text = message.time.toString()
     }
 

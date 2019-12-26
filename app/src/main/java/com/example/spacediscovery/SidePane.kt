@@ -15,7 +15,7 @@ import android.view.Menu
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.spacediscovery.bodiesandsatellites.BodiesSatellitesFragment
-import com.example.spacediscovery.chat.ChatActivity
+import com.example.spacediscovery.chat.ChatListActivity
 import com.example.spacediscovery.galaxymap.GalaxyMapFragment
 import com.example.spacediscovery.location.LocationFragment
 import com.example.spacediscovery.stations.StationsFragment
@@ -40,7 +40,7 @@ class SidePane : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
                 snackbar!!.setActionTextColor(ContextCompat.getColor(this, R.color.colorYellow))
                 snackbar!!.setAction("Go to chat") {
                     snackbar!!.dismiss()
-                    startActivity(Intent(this, ChatActivity::class.java))
+                    startActivity(Intent(this, ChatListActivity::class.java))
                 }
                 snackbar!!.show()
             }

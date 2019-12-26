@@ -12,7 +12,7 @@ import com.example.spacediscovery.R
 import com.example.spacediscovery.bodiesandsatellites.viewmodel.CelestialBodyViewModel
 import com.example.spacediscovery.di.Injectable
 import com.example.spacediscovery.services.CelestialBodyService
-import kotlinx.android.synthetic.main.activity_chat.*
+import kotlinx.android.synthetic.main.activity_chat_list.*
 import kotlinx.android.synthetic.main.fragment_bodies_satellites.*
 import javax.inject.Inject
 

@@ -25,6 +25,9 @@
             </intent-filter>
         </activity>
         <activity
+                android:name=".chat.ChatListActivity">
+        </activity>
+        <activity
                 android:name=".chat.ChatActivity">
         </activity>
         <activity

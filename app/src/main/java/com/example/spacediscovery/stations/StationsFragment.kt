@@ -12,7 +12,7 @@ import com.example.spacediscovery.R
 import com.example.spacediscovery.di.Injectable
 import com.example.spacediscovery.services.StationService
 import com.example.spacediscovery.stations.viewmodel.StationViewModel
-import kotlinx.android.synthetic.main.activity_chat.*
+import kotlinx.android.synthetic.main.activity_chat_list.*
 import kotlinx.android.synthetic.main.fragment_stations.*
 import javax.inject.Inject
 

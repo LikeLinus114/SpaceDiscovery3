@@ -4,6 +4,6 @@ import java.time.LocalTime
 
 class Message(
     var text: String,
-    var author: String,
+    var sender: String,
     var time: LocalTime
 )
