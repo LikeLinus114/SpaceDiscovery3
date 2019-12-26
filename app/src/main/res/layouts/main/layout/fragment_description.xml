@@ -31,13 +31,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:paddingStart="30dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="30dp"
             android:text="The application is used for astronauts.
                 \nIt allows users to:
                 \n   - define their location in the solar system;
                 \n   - look at the map of the galaxy;
                 \n   - get information about celestial bodies.
-                \n\nYou can select required item in the menu on the top left."
+                \n\nYou can select required item in the menu
+                \non the top left."
             android:textColor="@color/colorOrange"
             android:textSize="18dp"
             android:textStyle="bold"
