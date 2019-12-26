@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,23 +36,41 @@ class BodiesSatellitesFragment: Fragment(), Injectable {
 
         viewModel.fetchBodiesAndSatellites()
         observeViewModel()
+        enableSpinner(true)
     }
 
     private fun observeViewModel() {
         viewModel.celestialBodies.observe(this, Observer { bodies ->
             val preparedBodies = CelestialBodyService.prepareBodiesData(bodies)
             bodiesAdapter.updateBodies(preparedBodies)
+            if (preparedBodies.isEmpty()) {
+                no_bodies_label.visibility = View.VISIBLE
+            } else {
+                no_bodies_label.visibility = View.INVISIBLE
+            }
         })
         viewModel.loading.observe(this, Observer { loading ->
-            loading?.let { /*enableSpinner(it)*/ }
+            loading?.let { enableSpinner(it) }
         })
         viewModel.error.observe(this, Observer { error ->
             error?.let {
                 if (it) {
-                    /* show an appropriate message */
+                    no_bodies_label.visibility = View.VISIBLE
+                    Toast.makeText(this.context, "could not load the celestial bodies info", Toast.LENGTH_SHORT).show()
                 }
             }
         })
+    }
+
+    private fun enableSpinner(isEnabled: Boolean) {
+        if (isEnabled) {
+            loading_spinner.visibility = View.VISIBLE
+            shadow_view.visibility = View.VISIBLE
+            no_bodies_label.visibility = View.INVISIBLE
+        } else {
+            loading_spinner.visibility = View.GONE
+            shadow_view.visibility = View.GONE
+        }
     }
 
 }

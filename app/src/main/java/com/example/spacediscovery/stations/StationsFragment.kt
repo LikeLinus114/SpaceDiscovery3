@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,17 +42,34 @@ class StationsFragment: Fragment(), Injectable {
         viewModel.stations.observe(this, Observer { stations ->
             val preparedStations = StationService.prepareStationsData(stations)
             stationsAdapter.updateStations(preparedStations)
+            if (preparedStations.isEmpty()) {
+                no_stations_label.visibility = View.VISIBLE
+            } else {
+                no_stations_label.visibility = View.INVISIBLE
+            }
         })
         viewModel.loading.observe(this, Observer { loading ->
-            loading?.let { /*enableSpinner(it)*/ }
+            loading?.let { enableSpinner(it) }
         })
         viewModel.error.observe(this, Observer { error ->
             error?.let {
                 if (it) {
-                    /* show an appropriate message */
+                    no_stations_label.visibility = View.VISIBLE
+                    Toast.makeText(this.context, "could not load the stations info", Toast.LENGTH_SHORT).show()
                 }
             }
         })
+    }
+
+    private fun enableSpinner(isEnabled: Boolean) {
+        if (isEnabled) {
+            loading_spinner.visibility = View.VISIBLE
+            shadow_view.visibility = View.VISIBLE
+            no_stations_label.visibility = View.INVISIBLE
+        } else {
+            loading_spinner.visibility = View.GONE
+            shadow_view.visibility = View.GONE
+        }
     }
 
 }
