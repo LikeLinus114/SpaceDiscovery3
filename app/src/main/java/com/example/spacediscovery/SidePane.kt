@@ -12,6 +12,7 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.spacediscovery.bodiesandsatellites.BodiesSatellitesFragment
 import com.example.spacediscovery.chat.ChatActivity
@@ -35,6 +36,8 @@ class SidePane : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
                 snackbar!!.dismiss()
             } else {
                 snackbar = Snackbar.make(view, "No new messages", Snackbar.LENGTH_INDEFINITE)
+                snackbar!!.view.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccent))
+                snackbar!!.setActionTextColor(ContextCompat.getColor(this, R.color.colorYellow))
                 snackbar!!.setAction("Go to chat") {
                     snackbar!!.dismiss()
                     startActivity(Intent(this, ChatActivity::class.java))
