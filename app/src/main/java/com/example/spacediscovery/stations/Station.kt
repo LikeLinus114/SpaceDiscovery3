@@ -9,5 +9,5 @@ class Station(
     var signalQuality: String?,
     var description: String?,
     var encodedImage: String?,
-    var imageBitMap: Bitmap
+    var imageBitMap: Bitmap?
 )

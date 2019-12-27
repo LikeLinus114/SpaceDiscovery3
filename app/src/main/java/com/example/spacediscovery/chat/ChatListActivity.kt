@@ -2,6 +2,7 @@ package com.example.spacediscovery.chat
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spacediscovery.DatabaseHandler
@@ -21,8 +22,15 @@ class ChatListActivity: AppCompatActivity() {
 
         val db = DatabaseHandler(this)
         val chats = db.getAllChats().filter { it.isOpen }
-        chatsAdapter = ChatsAdapter(chats as ArrayList)
         db.close()
+        if (chats.isNotEmpty()) {
+            no_chats_label.visibility = View.INVISIBLE
+            no_chats_image.visibility = View.INVISIBLE
+        } else {
+            no_chats_label.visibility = View.VISIBLE
+            no_chats_image.visibility = View.VISIBLE
+        }
+        chatsAdapter = ChatsAdapter(chats as ArrayList)
         chat_list.layoutManager = LinearLayoutManager(applicationContext)
         chat_list.adapter = chatsAdapter
     }

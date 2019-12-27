@@ -23,6 +23,8 @@ class ChatActivity: AppCompatActivity() {
                 val chats = db.getAllChats() as ArrayList
                 var openChat = getOpenChat(chats)
                 if (openChat == null) {
+                    //remove image to prevent wasting the DB memory
+                    Shared.currentStation!!.imageBitMap = null
                     //create and add a new one if there is no such a chat
                     openChat = Chat(Shared.currentStation!!, arrayListOf(), true)
                     chats.add(openChat)
