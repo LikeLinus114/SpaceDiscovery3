@@ -9,6 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spacediscovery.R
+import com.example.spacediscovery.Shared
+import com.example.spacediscovery.chat.ChatActivity
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -22,6 +24,7 @@ class StationsAdapter(private var stations: ArrayList<Station>): RecyclerView.Ad
         var signalQuality: TextView = view.findViewById(R.id.station_signal_quality)
         var description: TextView = view.findViewById(R.id.station_description)
         var image: ImageView = view.findViewById(R.id.station_image)
+        var sendMessage: Button = view.findViewById(R.id.send_message)
         var showMessagesHistory: Button = view.findViewById(R.id.show_messages_history)
 
     }
@@ -55,6 +58,12 @@ class StationsAdapter(private var stations: ArrayList<Station>): RecyclerView.Ad
         holder.signalQuality.text = station.signalQuality.toString()
         holder.description.text = station.description
         holder.image.setImageBitmap(station.imageBitMap)
+        holder.sendMessage.setOnClickListener {
+            //go to the chat activity
+            Shared.currentStation = station
+            val intent = Intent(holder.itemView.context, ChatActivity::class.java)
+            holder.itemView.context.startActivity(intent)
+        }
         holder.showMessagesHistory.setOnClickListener {
             val intent = Intent(holder.itemView.context, ChatHistoryActivity::class.java)
             holder.itemView.context.startActivity(intent)

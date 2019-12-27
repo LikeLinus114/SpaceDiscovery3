@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/main_background">
@@ -17,7 +18,7 @@
             app:title="Space Discovery" />
 
     <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/station_image"
             android:layout_height="150dp"
             android:layout_width="match_parent"
             android:layout_margin="16dp"
@@ -29,7 +30,41 @@
             android:id="@+id/messages_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/station_image" />
+
+    <EditText
+            android:id="@+id/new_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/cardview_light_background"
+            android:hint="Write a message..."
+            android:padding="5dp"
+            android:textSize="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/messages_list" />
+
+    <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button2_selector"
+            android:text="submit"
+            android:textColor="@color/colorYellow"
+            app:layout_constraintStart_toStartOf="@+id/new_message"
+            app:layout_constraintTop_toBottomOf="@+id/new_message" />
+
+    <Button
+            android:id="@+id/clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button2_selector"
+            android:text="clear"
+            android:textColor="@color/colorYellow"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@+id/submit"
+            app:layout_constraintTop_toTopOf="@+id/submit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

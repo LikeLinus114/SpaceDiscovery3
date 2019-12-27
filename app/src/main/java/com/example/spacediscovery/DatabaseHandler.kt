@@ -39,6 +39,7 @@ class DatabaseHandler(context: Context):
         val db = this.writableDatabase
         val values = ContentValues()
         values.put(KEY_DATA, Gson().toJson(chat))
+        db.insert(TABLE_CHATS, null, values)
     }
 
     override fun getAllChats(): List<Chat> {

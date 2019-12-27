@@ -1,9 +1,9 @@
 package com.example.spacediscovery.stations
 
-import java.time.LocalTime
+import java.time.LocalDateTime
 
 class Message(
     var text: String,
     var sender: String,
-    var time: LocalTime
+    var dateTime: LocalDateTime
 )
