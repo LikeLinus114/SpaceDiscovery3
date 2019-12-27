@@ -20,7 +20,8 @@ class ChatListActivity: AppCompatActivity() {
         supportActionBar?.setHomeButtonEnabled(true)
 
         val db = DatabaseHandler(this)
-        chatsAdapter = ChatsAdapter(db.getAllChats() as ArrayList<Chat>)
+        val chats = db.getAllChats().filter { it.isOpen }
+        chatsAdapter = ChatsAdapter(chats as ArrayList)
         db.close()
         chat_list.layoutManager = LinearLayoutManager(applicationContext)
         chat_list.adapter = chatsAdapter

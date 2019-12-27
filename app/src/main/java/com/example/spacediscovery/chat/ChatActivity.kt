@@ -24,7 +24,7 @@ class ChatActivity: AppCompatActivity() {
                 var openChat = getOpenChat(chats)
                 if (openChat == null) {
                     //create and add a new one if there is no such a chat
-                    openChat = Chat(Shared.currentStation!!, arrayListOf(), false)
+                    openChat = Chat(Shared.currentStation!!, arrayListOf(), true)
                     chats.add(openChat)
                 }
                 //add the message to the chat
@@ -49,7 +49,7 @@ class ChatActivity: AppCompatActivity() {
 
     private fun getOpenChat(chats: ArrayList<Chat>): Chat? {
         return chats.filter {
-            !it.isClosed
+            it.isOpen
         }.find {
             it.station.name == Shared.currentStation!!.name
         }
