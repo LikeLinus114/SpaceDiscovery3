@@ -23,8 +23,8 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-            android:id="@+id/time"
-            android:text="[time]"
+            android:id="@+id/date_time"
+            android:text="[date_time]"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"

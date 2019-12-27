@@ -16,8 +16,8 @@ class ChatsAdapter(private var chats: ArrayList<Chat>): RecyclerView.Adapter<Cha
 
         val stationIcon: ImageView = view.findViewById(R.id.station_icon)
         val stationName: TextView = view.findViewById(R.id.station_name)
-        val time: TextView = view.findViewById(R.id.time)
-        val message: TextView = view.findViewById(R.id.message)
+        val dateTime: TextView = view.findViewById(R.id.date_time)
+        val message: TextView = view.findViewById(R.id.last_message)
 
     }
 
@@ -43,8 +43,14 @@ class ChatsAdapter(private var chats: ArrayList<Chat>): RecyclerView.Adapter<Cha
         val chat = chats[position]
         holder.stationIcon.setImageBitmap(chat.station.imageBitMap)
         holder.stationName.text = chat.station.name
-        holder.time.text = chat.lastMessage.time.toString()
-        holder.message.text = chat.lastMessage.text
+        System.out.println(chat.messages.size)
+        System.out.println("AAAAAAAAAAA")
+        System.out.println(chat.messages[0].sender)
+        System.out.println(chat.messages[0].text)
+        System.out.println(chat.messages[0].dateTime)
+        System.out.println(chat.messages[chat.messages.size - 1])
+        holder.dateTime.text = chat.messages[chat.messages.size - 1].dateTime.toString()
+        holder.message.text = chat.messages[chat.messages.size - 1].text
     }
 
 }

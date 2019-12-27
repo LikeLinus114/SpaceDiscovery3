@@ -63,16 +63,6 @@ class DatabaseHandler(context: Context):
     override fun deleteAll() {
         val db = this.writableDatabase
         db.delete(TABLE_CHATS, null, null)
-        db.close()
-    }
-
-    override fun getChatsCount(): Int {
-        val countQuery = "SELECT * FROM " + TABLE_CHATS
-        val db = this.readableDatabase
-        val cursor = db.rawQuery(countQuery, null)
-        cursor.close()
-
-        return cursor.count
     }
 
 }

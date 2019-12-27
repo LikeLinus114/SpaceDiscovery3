@@ -20,18 +20,23 @@ class ChatActivity: AppCompatActivity() {
         submit.setOnClickListener {
             if (new_message.text.isNotEmpty()) {
                 val db = DatabaseHandler(this)
-                val chats = db.getAllChats()
-                var openedChat = chats.filter {
-                    !it.isClosed
-                }.find {
-                    it.station.name == Shared.currentStation!!.name
+                val chats = db.getAllChats() as ArrayList
+                var openChat = getOpenChat(chats)
+                if (openChat == null) {
+                    //create and add a new one if there is no such a chat
+                    openChat = Chat(Shared.currentStation!!, arrayListOf(), false)
+                    chats.add(openChat)
                 }
-                if (openedChat == null) {
-                    openedChat = Chat(Shared.currentStation!!, arrayListOf(), false)
-                    openedChat.messages.add(
-                        Message(new_message.text.toString(), "me", LocalDateTime.now())
-                    )
+                //add the message to the chat
+                openChat.messages.add(
+                    Message(new_message.text.toString(), "me", LocalDateTime.now().toString())
+                )
+                //update DB
+                db.deleteAll()
+                chats.forEach {
+                    db.addChat(it)
                 }
+                db.close()
                 Toast.makeText(this, "The message has been sent successfully", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "You did not enter a message", Toast.LENGTH_SHORT).show()
@@ -39,6 +44,14 @@ class ChatActivity: AppCompatActivity() {
         }
         clear.setOnClickListener {
             new_message.text.clear()
+        }
+    }
+
+    private fun getOpenChat(chats: ArrayList<Chat>): Chat? {
+        return chats.filter {
+            !it.isClosed
+        }.find {
+            it.station.name == Shared.currentStation!!.name
         }
     }
 

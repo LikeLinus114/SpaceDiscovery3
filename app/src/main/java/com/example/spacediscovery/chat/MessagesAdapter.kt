@@ -14,7 +14,7 @@ class MessagesAdapter: RecyclerView.Adapter<MessagesAdapter.MessagesViewHolder>(
 
         val message: TextView = view.findViewById(R.id.message)
         val sender: TextView = view.findViewById(R.id.sender)
-        val time: TextView = view.findViewById(R.id.time)
+        val dateTime: TextView = view.findViewById(R.id.date_time)
 
     }
 
@@ -32,7 +32,7 @@ class MessagesAdapter: RecyclerView.Adapter<MessagesAdapter.MessagesViewHolder>(
         val message = MessagesService.messages[position]
         holder.message.text = message.text
         holder.sender.text = message.sender
-        holder.time.text = message.time.toString()
+        holder.dateTime.text = message.dateTime.toString()
     }
 
 }

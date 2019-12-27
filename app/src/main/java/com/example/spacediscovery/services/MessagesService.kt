@@ -1,6 +1,7 @@
 package com.example.spacediscovery.services
 
 import com.example.spacediscovery.stations.Message
+import java.time.LocalDateTime
 import java.time.LocalTime
 
 class MessagesService {
@@ -15,27 +16,27 @@ class MessagesService {
                 Message(
                     "aaa",
                     "me",
-                    LocalTime.of(10, 20)
+                    LocalDateTime.now().toString()
                 ),
                 Message(
                     "bbb",
                     "Station1",
-                    LocalTime.of(10, 22)
+                    LocalDateTime.now().toString()
                 ),
                 Message(
                     "ccc",
                     "me",
-                    LocalTime.of(10, 24)
+                    LocalDateTime.now().toString()
                 ),
                 Message(
                     "ddd",
                     "Station1",
-                    LocalTime.of(10, 26)
+                    LocalDateTime.now().toString()
                 ),
                 Message(
                     "eee",
                     "Station1",
-                    LocalTime.of(10, 28)
+                    LocalDateTime.now().toString()
                 )
             )
         }
