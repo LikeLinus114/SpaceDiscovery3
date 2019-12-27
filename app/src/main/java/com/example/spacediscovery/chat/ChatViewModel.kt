@@ -3,6 +3,7 @@ package com.example.spacediscovery.chat
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.spacediscovery.stations.Station
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -21,7 +22,11 @@ class ChatViewModel @Inject constructor(): ViewModel() {
     fun fetchChats() {
         loading.value = true
         disposable.add(
-            Single.just(arrayListOf<Chat>())
+            Single.just(
+                arrayListOf<Chat>(
+                    /*Chat()*/
+                )
+            )
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<List<Chat>>() {
