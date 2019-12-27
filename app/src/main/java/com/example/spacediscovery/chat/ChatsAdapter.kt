@@ -8,10 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spacediscovery.R
-import com.example.spacediscovery.services.ChatsService
 import com.example.spacediscovery.stations.ChatDetailsActivity
 
-class ChatsAdapter: RecyclerView.Adapter<ChatsAdapter.ChatsViewHolder>() {
+class ChatsAdapter(private var chats: ArrayList<Chat>): RecyclerView.Adapter<ChatsAdapter.ChatsViewHolder>() {
 
     class ChatsViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
@@ -32,10 +31,16 @@ class ChatsAdapter: RecyclerView.Adapter<ChatsAdapter.ChatsViewHolder>() {
         return ChatsViewHolder(itemView)
     }
 
-    override fun getItemCount() = ChatsService.currentChats.size
+    fun updateChats(newChats: List<Chat>) {
+        chats.clear()
+        chats.addAll(newChats)
+        notifyDataSetChanged()
+    }
+
+    override fun getItemCount() = chats.size
 
     override fun onBindViewHolder(holder: ChatsViewHolder, position: Int) {
-        val chat = ChatsService.currentChats[position]
+        val chat = chats[position]
         holder.stationIcon.setImageBitmap(chat.station.imageBitMap)
         holder.stationName.text = chat.station.name
         holder.time.text = chat.lastMessage.time.toString()

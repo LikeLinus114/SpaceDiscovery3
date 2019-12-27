@@ -35,9 +35,6 @@ class StationsAdapter(private var stations: ArrayList<Station>): RecyclerView.Ad
     fun updateStations(newStations: List<Station>) {
         stations.clear()
         stations.addAll(newStations)
-        newStations.forEach {
-            println(it.imageBitMap)
-        }
         notifyDataSetChanged()
     }
 

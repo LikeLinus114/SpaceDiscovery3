@@ -1,4 +1,4 @@
-package com.example.spacediscovery.stations
+package com.example.spacediscovery.chat
 
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +21,9 @@ class MessagesAdapter: RecyclerView.Adapter<MessagesAdapter.MessagesViewHolder>(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessagesViewHolder {
         val itemView: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_message, parent, false)
-        return MessagesViewHolder(itemView)
+        return MessagesViewHolder(
+            itemView
+        )
     }
 
     override fun getItemCount() = MessagesService.messages.size
