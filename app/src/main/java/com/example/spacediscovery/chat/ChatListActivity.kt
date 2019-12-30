@@ -19,6 +19,7 @@ class ChatListActivity: AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
+        toolbar.title = "Open chats"
 
         val db = DatabaseHandler(this)
         val chats = db.getAllChats().filter { it.isOpen }

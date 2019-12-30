@@ -13,7 +13,7 @@ class ChatDetailsActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_details)
         messages_list.layoutManager = LinearLayoutManager(applicationContext)
-        messages_list.adapter = MessagesAdapter()
+        messages_list.adapter = MessagesAdapter(arrayListOf())
     }
 
 }

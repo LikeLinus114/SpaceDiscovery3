@@ -7,8 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spacediscovery.R
 import com.example.spacediscovery.services.MessagesService
+import com.example.spacediscovery.stations.Message
 
-class MessagesAdapter: RecyclerView.Adapter<MessagesAdapter.MessagesViewHolder>() {
+class MessagesAdapter(var messages: ArrayList<Message>): RecyclerView.Adapter<MessagesAdapter.MessagesViewHolder>() {
 
     class MessagesViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
@@ -16,6 +17,12 @@ class MessagesAdapter: RecyclerView.Adapter<MessagesAdapter.MessagesViewHolder>(
         val sender: TextView = view.findViewById(R.id.sender)
         val dateTime: TextView = view.findViewById(R.id.date_time)
 
+    }
+
+    fun updateMessages(newMessages: List<Message>) {
+        messages.clear()
+        messages.addAll(newMessages)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessagesViewHolder {

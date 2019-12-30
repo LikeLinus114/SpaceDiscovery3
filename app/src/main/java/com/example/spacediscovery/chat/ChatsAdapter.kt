@@ -9,6 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spacediscovery.R
 import com.example.spacediscovery.stations.ChatDetailsActivity
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import kotlin.collections.ArrayList
 
 class ChatsAdapter(private var chats: ArrayList<Chat>): RecyclerView.Adapter<ChatsAdapter.ChatsViewHolder>() {
 
@@ -17,6 +20,7 @@ class ChatsAdapter(private var chats: ArrayList<Chat>): RecyclerView.Adapter<Cha
         val stationIcon: ImageView = view.findViewById(R.id.station_icon)
         val stationName: TextView = view.findViewById(R.id.station_name)
         val dateTime: TextView = view.findViewById(R.id.date_time)
+        val sender: TextView = view.findViewById(R.id.sender)
         val message: TextView = view.findViewById(R.id.last_message)
 
     }
@@ -41,16 +45,11 @@ class ChatsAdapter(private var chats: ArrayList<Chat>): RecyclerView.Adapter<Cha
 
     override fun onBindViewHolder(holder: ChatsViewHolder, position: Int) {
         val chat = chats[position]
-        holder.stationIcon.setImageBitmap(chat.station.imageBitMap)
+        holder.stationIcon.setImageDrawable(holder.itemView.resources.getDrawable(R.drawable.no_image_available, holder.itemView.context.theme))
         holder.stationName.text = chat.station.name
-        System.out.println(chat.messages.size)
-        System.out.println("AAAAAAAAAAA")
-        System.out.println(chat.messages[0].sender)
-        System.out.println(chat.messages[0].text)
-        System.out.println(chat.messages[0].dateTime)
-        System.out.println(chat.messages[chat.messages.size - 1])
-        holder.dateTime.text = chat.messages[chat.messages.size - 1].dateTime.toString()
-        holder.message.text = chat.messages[chat.messages.size - 1].text
+        holder.dateTime.text = LocalDateTime.parse(chat.getLastMessage().dateTime).format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"))
+        holder.sender.text = chat.getLastMessage().sender
+        holder.message.text = chat.getLastMessage().text
     }
 
 }
