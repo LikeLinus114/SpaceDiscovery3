@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.spacediscovery.R
 import com.example.spacediscovery.services.MessagesService
 import com.example.spacediscovery.stations.Message
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class MessagesAdapter(var messages: ArrayList<Message>): RecyclerView.Adapter<MessagesAdapter.MessagesViewHolder>() {
 
@@ -39,7 +41,9 @@ class MessagesAdapter(var messages: ArrayList<Message>): RecyclerView.Adapter<Me
         val message = MessagesService.messages[position]
         holder.message.text = message.text
         holder.sender.text = message.sender
-        holder.dateTime.text = message.dateTime.toString()
+        holder.dateTime.text = LocalDateTime
+            .parse(message.dateTime)
+            .format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"))
     }
 
 }

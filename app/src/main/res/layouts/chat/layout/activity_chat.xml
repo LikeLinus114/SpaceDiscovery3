@@ -40,8 +40,11 @@
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/messages_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/station_image" />
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintTop_toBottomOf="@id/station_image"
+            app:layout_constraintBottom_toTopOf="@id/new_message" />
 
     <TextView
             android:id="@+id/empty_messages_history_label"
@@ -50,10 +53,10 @@
             android:gravity="center"
             android:text="Messages history is empty"
             android:textColor="@color/colorPrimary"
-            android:textSize="18dp"
-            android:textStyle="italic"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/messages_list" />
+            android:textSize="28dp"
+            android:textStyle="italic|bold"
+            app:layout_constraintTop_toTopOf="@id/messages_list"
+            app:layout_constraintBottom_toBottomOf="@id/messages_list" />
 
     <EditText
             android:id="@+id/new_message"
@@ -61,23 +64,24 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:background="@color/cardview_light_background"
             android:hint="Write a message..."
             android:padding="5dp"
             android:textSize="15dp"
-            app:layout_constraintTop_toBottomOf="@+id/empty_messages_history_label" />
+            app:layout_constraintBottom_toTopOf="@+id/submit" />
 
     <Button
             android:id="@+id/submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:background="@drawable/button2_selector"
             android:text="submit"
             android:textColor="@color/colorYellow"
-            app:layout_constraintStart_toStartOf="@+id/new_message"
-            app:layout_constraintTop_toBottomOf="@+id/new_message" />
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     <Button
             android:id="@+id/clear"
