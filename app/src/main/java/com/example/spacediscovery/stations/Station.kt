@@ -10,4 +10,10 @@ class Station(
     var description: String?,
     var encodedImage: String?,
     var imageBitMap: Bitmap?
-)
+) {
+
+    fun copyWithNoImage(): Station {
+        return Station(name, type, distance, signalQuality, description, null, null)
+    }
+
+}

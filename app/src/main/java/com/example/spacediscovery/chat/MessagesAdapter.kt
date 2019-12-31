@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spacediscovery.R
-import com.example.spacediscovery.services.MessagesService
 import com.example.spacediscovery.stations.Message
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -35,10 +34,10 @@ class MessagesAdapter(var messages: ArrayList<Message>): RecyclerView.Adapter<Me
         )
     }
 
-    override fun getItemCount() = MessagesService.messages.size
+    override fun getItemCount() = messages.size
 
     override fun onBindViewHolder(holder: MessagesViewHolder, position: Int) {
-        val message = MessagesService.messages[position]
+        val message = messages[position]
         holder.message.text = message.text
         holder.sender.text = message.sender
         holder.dateTime.text = LocalDateTime
