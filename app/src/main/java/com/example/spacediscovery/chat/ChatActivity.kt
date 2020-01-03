@@ -36,11 +36,18 @@ class ChatActivity: AppCompatActivity() {
             new_message.text.clear()
         }
         updateMessages()
+
+        val isActive = intent.getBooleanExtra("isActive", true)
+        if (!isActive) {
+            listOf(new_message, submit, clear).forEach {
+                it.visibility = View.INVISIBLE
+            }
+        }
     }
 
     private fun getOpenChat(chats: ArrayList<Chat>): Chat? {
         return chats.filter {
-            it.isOpen
+            it.isActive
         }.find {
             it.station.name == Shared.currentStation!!.name
         }

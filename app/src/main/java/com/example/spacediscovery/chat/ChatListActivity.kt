@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spacediscovery.DatabaseHandler
 import com.example.spacediscovery.R
+import com.example.spacediscovery.Shared
 import kotlinx.android.synthetic.main.activity_chat_list.*
 
 class ChatListActivity: AppCompatActivity() {
@@ -19,10 +20,16 @@ class ChatListActivity: AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
-        toolbar.title = "Open chats"
 
         val db = DatabaseHandler(this)
-        val chats = db.getAllChats().filter { it.isOpen }
+        val chats: List<Chat>
+        if (intent.getStringExtra("purpose") == "history") {
+            toolbar.title = "Chat history"
+            chats = db.getAllChats().filter { it.station.name == Shared.currentStation!!.name }
+        } else {
+            toolbar.title = "Active chats"
+            chats = db.getAllChats().filter { it.isActive }
+        }
         db.close()
         if (chats.isNotEmpty()) {
             no_chats_label.visibility = View.INVISIBLE

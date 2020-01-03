@@ -4,7 +4,7 @@ import com.example.spacediscovery.stations.Message
 import com.example.spacediscovery.stations.Station
 import java.time.LocalDateTime
 
-class Chat(var station: Station, var messages: ArrayList<Message>, var isOpen: Boolean) {
+class Chat(var station: Station, var messages: ArrayList<Message>, var isActive: Boolean) {
 
     fun getLastMessage(): Message {
         return messages[messages.size - 1]

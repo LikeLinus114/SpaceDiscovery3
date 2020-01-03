@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
             android:gravity="center"
-            android:text="There are no current chats"
+            android:text="There are no chats"
             android:textColor="@color/colorYellowDark"
             android:textSize="40dp"
             android:textStyle="bold"

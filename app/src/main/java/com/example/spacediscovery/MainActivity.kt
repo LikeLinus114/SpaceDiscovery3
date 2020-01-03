@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         val db = DatabaseHandler(this)
         val chats = db.getAllChats() as ArrayList
         chats.forEach {
-            it.isOpen = false
+            it.isActive = false
         }
         //update the DB
         db.deleteAll()

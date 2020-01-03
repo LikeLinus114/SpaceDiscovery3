@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.spacediscovery.R
 import com.example.spacediscovery.Shared
 import com.example.spacediscovery.chat.ChatActivity
+import com.example.spacediscovery.chat.ChatListActivity
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -26,7 +27,7 @@ class StationsAdapter(private var stations: ArrayList<Station>): RecyclerView.Ad
         var description: TextView = view.findViewById(R.id.station_description)
         var image: ImageView = view.findViewById(R.id.station_image)
         var sendMessage: Button = view.findViewById(R.id.send_message)
-        var showMessagesHistory: Button = view.findViewById(R.id.show_messages_history)
+        var showChatHistory: Button = view.findViewById(R.id.show_chat_history)
 
     }
 
@@ -62,13 +63,14 @@ class StationsAdapter(private var stations: ArrayList<Station>): RecyclerView.Ad
         holder.description.text = Html.fromHtml(description, Html.FROM_HTML_MODE_LEGACY)
         holder.image.setImageBitmap(station.imageBitMap)
         holder.sendMessage.setOnClickListener {
-            //go to the chat activity
             Shared.currentStation = station
             val intent = Intent(holder.itemView.context, ChatActivity::class.java)
             holder.itemView.context.startActivity(intent)
         }
-        holder.showMessagesHistory.setOnClickListener {
-            val intent = Intent(holder.itemView.context, ChatHistoryActivity::class.java)
+        holder.showChatHistory.setOnClickListener {
+            Shared.currentStation = station
+            val intent = Intent(holder.itemView.context, ChatListActivity::class.java)
+            intent.putExtra("purpose", "history")
             holder.itemView.context.startActivity(intent)
         }
     }
