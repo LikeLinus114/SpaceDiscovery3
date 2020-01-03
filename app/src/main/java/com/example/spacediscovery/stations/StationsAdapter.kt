@@ -1,6 +1,7 @@
 package com.example.spacediscovery.stations
 
 import android.content.Intent
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,7 +57,9 @@ class StationsAdapter(private var stations: ArrayList<Station>): RecyclerView.Ad
             .replace("_"," ")
         holder.distance.text = station.distance.toString()
         holder.signalQuality.text = station.signalQuality.toString()
-        holder.description.text = station.description
+        println(holder.itemView.resources.getString(R.string.description, station.description))
+        val description = holder.itemView.resources.getString(R.string.description, station.description)
+        holder.description.text = Html.fromHtml(description, Html.FROM_HTML_MODE_LEGACY)
         holder.image.setImageBitmap(station.imageBitMap)
         holder.sendMessage.setOnClickListener {
             //go to the chat activity

@@ -1,5 +1,6 @@
 package com.example.spacediscovery.bodiesandsatellites
 
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +53,9 @@ class CelestialBodiesAdapter(private var bodies: ArrayList<CelestialBody>):
             .name
             .toLowerCase(Locale.getDefault())
         holder.distance.text = body.distance.toString()
-        holder.description.text = body.description.toString()
+        println(holder.itemView.resources.getString(R.string.description, body.description))
+        val description = holder.itemView.resources.getString(R.string.description, body.description)
+        holder.description.text = Html.fromHtml(description, Html.FROM_HTML_MODE_LEGACY)
         holder.image.setImageBitmap(body.imageBitMap)
     }
 

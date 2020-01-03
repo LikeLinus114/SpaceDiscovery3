@@ -73,10 +73,13 @@ class SidePane : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
+            R.id.update -> {
+                val fragment = supportFragmentManager.findFragmentByTag("fragmentTag")!!
+                val fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.detach(fragment).attach(fragment).commit()
+                true
+            }
             R.id.home -> {
                 openSection(DescriptionFragment())
                 true
@@ -119,7 +122,7 @@ class SidePane : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
 
     private fun openSection(fragment: Fragment) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.section, fragment)
+        fragmentTransaction.replace(R.id.section, fragment, "fragmentTag")
         fragmentTransaction.commit()
     }
 }
