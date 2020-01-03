@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spacediscovery.R
-import com.example.spacediscovery.stations.ChatDetailsActivity
+import com.example.spacediscovery.Shared
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import kotlin.collections.ArrayList
@@ -28,17 +28,7 @@ class ChatsAdapter(private var chats: ArrayList<Chat>): RecyclerView.Adapter<Cha
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatsViewHolder {
         val itemView: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_chat, parent, false)
-        itemView.setOnClickListener {
-            val intent = Intent(it.context, ChatDetailsActivity::class.java)
-            it.context.startActivity(intent)
-        }
         return ChatsViewHolder(itemView)
-    }
-
-    fun updateChats(newChats: List<Chat>) {
-        chats.clear()
-        chats.addAll(newChats)
-        notifyDataSetChanged()
     }
 
     override fun getItemCount() = chats.size
@@ -50,6 +40,11 @@ class ChatsAdapter(private var chats: ArrayList<Chat>): RecyclerView.Adapter<Cha
         holder.dateTime.text = LocalDateTime.parse(chat.getLastMessage().dateTime).format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"))
         holder.sender.text = chat.getLastMessage().sender
         holder.message.text = chat.getLastMessage().text
+        holder.itemView.setOnClickListener {
+            Shared.currentStation = chats[position].station
+            val intent = Intent(it.context, ChatActivity::class.java)
+            it.context.startActivity(intent)
+        }
     }
 
 }

@@ -53,7 +53,6 @@ class ChatActivity: AppCompatActivity() {
         if (openChat == null) {
             //create and add a new one if there is no such a chat
             openChat = Chat(Shared.currentStation!!.copyWithNoImage(), arrayListOf(), true)
-            chats.add(openChat)
         }
         //add the message to the chat
         val result = openChat.addMessage(new_message.text.toString(), "me")
@@ -62,6 +61,7 @@ class ChatActivity: AppCompatActivity() {
         if (openChat.messages.isEmpty()) {
             empty_messages_history_label.visibility = View.VISIBLE
         } else {
+            chats.add(openChat)
             empty_messages_history_label.visibility = View.GONE
             messages_list.smoothScrollToPosition(openChat.messages.size - 1)
         }

@@ -14,5 +14,20 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             startActivity(Intent(this@MainActivity, SidePane::class.java))
         }
+        closeActiveChats()
+    }
+
+    private fun closeActiveChats() {
+        val db = DatabaseHandler(this)
+        val chats = db.getAllChats() as ArrayList
+        chats.forEach {
+            it.isOpen = false
+        }
+        //update the DB
+        db.deleteAll()
+        chats.forEach {
+            db.addChat(it)
+        }
+        db.close()
     }
 }
