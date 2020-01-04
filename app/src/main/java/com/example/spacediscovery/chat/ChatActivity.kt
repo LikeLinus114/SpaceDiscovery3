@@ -11,17 +11,31 @@ import com.example.spacediscovery.DatabaseHandler
 import com.example.spacediscovery.R
 import com.example.spacediscovery.Shared
 import kotlinx.android.synthetic.main.activity_chat.*
+import kotlinx.android.synthetic.main.activity_chat_history.*
 import kotlin.collections.ArrayList
 
 class ChatActivity: AppCompatActivity() {
 
     private lateinit var adapter: MessagesAdapter
+    private var isActive = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
         station_image.setImageBitmap(Shared.currentStation!!.imageBitMap)
-        adapter = MessagesAdapter(arrayListOf())
+        interlocutor.text = Shared.currentStation!!.name
+
+        isActive = intent.getBooleanExtra("isActive", true)
+        if (!isActive) {
+            listOf(new_message, submit, clear, empty_messages_history_label).forEach {
+                it.visibility = View.INVISIBLE
+            }
+            adapter = MessagesAdapter(Shared.currentChat!!.messages)
+        } else {
+            adapter = MessagesAdapter(arrayListOf())
+            updateMessages()
+        }
+
         messages_list.layoutManager = LinearLayoutManager(applicationContext)
         messages_list.adapter = adapter
 
@@ -34,14 +48,6 @@ class ChatActivity: AppCompatActivity() {
         }
         clear.setOnClickListener {
             new_message.text.clear()
-        }
-        updateMessages()
-
-        val isActive = intent.getBooleanExtra("isActive", true)
-        if (!isActive) {
-            listOf(new_message, submit, clear).forEach {
-                it.visibility = View.INVISIBLE
-            }
         }
     }
 

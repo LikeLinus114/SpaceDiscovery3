@@ -16,4 +16,8 @@ class Station(
         return Station(name, type, distance, signalQuality, description, null, null)
     }
 
+    override fun toString(): String {
+        return "Station(name='$name', type=$type, distance=$distance, signalQuality=$signalQuality, description=$description, encodedImage=$encodedImage, imageBitMap=$imageBitMap)"
+    }
+
 }

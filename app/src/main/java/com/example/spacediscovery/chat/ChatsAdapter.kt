@@ -42,6 +42,7 @@ class ChatsAdapter(private var chats: ArrayList<Chat>): RecyclerView.Adapter<Cha
         holder.message.text = chat.getLastMessage().text
         holder.itemView.setOnClickListener {
             Shared.currentStation = chats[position].station
+            Shared.currentChat = chats[position]
             val intent = Intent(it.context, ChatActivity::class.java)
             intent.putExtra("isActive", false)
             it.context.startActivity(intent)
