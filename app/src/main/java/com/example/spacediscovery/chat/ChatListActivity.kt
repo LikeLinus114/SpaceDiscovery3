@@ -38,6 +38,9 @@ class ChatListActivity: AppCompatActivity() {
             no_chats_label.visibility = View.VISIBLE
             no_chats_image.visibility = View.VISIBLE
         }
+        chats.forEach {
+            it.station.imageBitMap = Shared.currentStation!!.imageBitMap
+        }
         chatsAdapter = ChatsAdapter(chats as ArrayList)
         chat_list.layoutManager = LinearLayoutManager(applicationContext)
         chat_list.adapter = chatsAdapter

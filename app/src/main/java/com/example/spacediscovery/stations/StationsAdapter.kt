@@ -64,6 +64,7 @@ class StationsAdapter(private var stations: ArrayList<Station>): RecyclerView.Ad
         holder.image.setImageBitmap(station.imageBitMap)
         holder.sendMessage.setOnClickListener {
             Shared.currentStation = station
+            Shared.currentChat = null
             val intent = Intent(holder.itemView.context, ChatActivity::class.java)
             holder.itemView.context.startActivity(intent)
         }

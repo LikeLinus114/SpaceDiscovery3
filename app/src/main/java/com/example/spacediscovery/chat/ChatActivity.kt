@@ -11,80 +11,68 @@ import com.example.spacediscovery.DatabaseHandler
 import com.example.spacediscovery.R
 import com.example.spacediscovery.Shared
 import kotlinx.android.synthetic.main.activity_chat.*
-import kotlinx.android.synthetic.main.activity_chat_history.*
-import kotlin.collections.ArrayList
 
 class ChatActivity: AppCompatActivity() {
 
     private lateinit var adapter: MessagesAdapter
-    private var isActive = true
+    private var db: DatabaseHandler? = null
+    private var allChats: Set<Chat>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
-        station_image.setImageBitmap(Shared.currentStation!!.imageBitMap)
-        interlocutor.text = Shared.currentStation!!.name
 
-        isActive = intent.getBooleanExtra("isActive", true)
-        if (!isActive) {
-            listOf(new_message, submit, clear, empty_messages_history_label).forEach {
+        interlocutor.text = Shared.currentStation!!.name
+        station_image.setImageBitmap(Shared.currentStation!!.imageBitMap)
+
+        initChat()
+        listOf(new_message, submit, clear, empty_messages_history_label).forEach {
+            if (Shared.currentChat!!.isActive) {
+                it.visibility = View.VISIBLE
+            } else {
                 it.visibility = View.INVISIBLE
             }
-            adapter = MessagesAdapter(Shared.currentChat!!.messages)
-        } else {
-            adapter = MessagesAdapter(arrayListOf())
-            updateMessages()
         }
-
+        adapter = MessagesAdapter(Shared.currentChat!!.messages)
         messages_list.layoutManager = LinearLayoutManager(applicationContext)
         messages_list.adapter = adapter
 
         submit.setOnClickListener {
-            val result = updateMessages()
+            val result = Shared.currentChat!!.addMessage(new_message.text.toString(), "me")
             Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
             clear.performClick()
+            //close the on-screen keyboard
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(new_message.windowToken, 0)
+
+            empty_messages_history_label.visibility = View.GONE
+            messages_list.smoothScrollToPosition(Shared.currentChat!!.messages.size - 1)
         }
         clear.setOnClickListener {
             new_message.text.clear()
         }
     }
 
-    private fun getOpenChat(chats: ArrayList<Chat>): Chat? {
-        return chats.filter {
-            it.isActive
-        }.find {
-            it.station.name == Shared.currentStation!!.name
+    private fun initChat() {
+        db = DatabaseHandler(this)
+        allChats = db!!.getAllChats().toHashSet()
+        if (Shared.currentChat == null) {
+            Shared.currentChat = Chat(Shared.currentStation!!.copyWithNoImage(), arrayListOf(), true)
+            empty_messages_history_label.visibility = View.VISIBLE
+        } else {
+            empty_messages_history_label.visibility = View.GONE
+            messages_list.smoothScrollToPosition(Shared.currentChat!!.messages.size - 1)
         }
     }
 
-    private fun updateMessages(): String {
-        val db = DatabaseHandler(this)
-        val chats = db.getAllChats() as ArrayList
-        var openChat = getOpenChat(chats)
-        if (openChat == null) {
-            //create and add a new one if there is no such a chat
-            openChat = Chat(Shared.currentStation!!.copyWithNoImage(), arrayListOf(), true)
-        }
-        //add the message to the chat
-        val result = openChat.addMessage(new_message.text.toString(), "me")
-        //update the recyclerView
-        adapter.updateMessages(openChat.messages)
-        if (openChat.messages.isEmpty()) {
-            empty_messages_history_label.visibility = View.VISIBLE
-        } else {
-            chats.add(openChat)
-            empty_messages_history_label.visibility = View.GONE
-            messages_list.smoothScrollToPosition(openChat.messages.size - 1)
-        }
+    override fun finish() {
         //update the DB
-        db.deleteAll()
-        chats.forEach {
-            db.addChat(it)
+        db!!.deleteAll()
+        allChats!!.forEach {
+            db!!.addChat(it)
         }
-        db.close()
-        return result
+        db!!.close()
+        super.finish()
     }
 
 }

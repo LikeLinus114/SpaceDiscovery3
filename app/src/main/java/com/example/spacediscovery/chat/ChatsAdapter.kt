@@ -35,7 +35,7 @@ class ChatsAdapter(private var chats: ArrayList<Chat>): RecyclerView.Adapter<Cha
 
     override fun onBindViewHolder(holder: ChatsViewHolder, position: Int) {
         val chat = chats[position]
-        holder.stationIcon.setImageDrawable(holder.itemView.resources.getDrawable(R.drawable.no_image_available, holder.itemView.context.theme))
+        holder.stationIcon.setImageBitmap(chat.station.imageBitMap)
         holder.stationName.text = chat.station.name
         holder.dateTime.text = LocalDateTime.parse(chat.getLastMessage().dateTime).format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"))
         holder.sender.text = chat.getLastMessage().sender
