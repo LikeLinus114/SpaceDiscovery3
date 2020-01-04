@@ -26,7 +26,7 @@ class ChatActivity: AppCompatActivity() {
         station_image.setImageBitmap(Shared.currentStation!!.imageBitMap)
 
         initChat()
-        listOf(new_message, submit, clear, empty_messages_history_label).forEach {
+        listOf(new_message, submit, clear).forEach {
             if (Shared.currentChat!!.isActive) {
                 it.visibility = View.VISIBLE
             } else {
@@ -60,16 +60,20 @@ class ChatActivity: AppCompatActivity() {
             Shared.currentChat = Chat(Shared.currentStation!!.copyWithNoImage(), arrayListOf(), true)
             empty_messages_history_label.visibility = View.VISIBLE
         } else {
+            allChats = allChats!!.minus(Shared.currentChat!!)
             empty_messages_history_label.visibility = View.GONE
             messages_list.smoothScrollToPosition(Shared.currentChat!!.messages.size - 1)
         }
     }
 
     override fun finish() {
-        //update the DB
-        db!!.deleteAll()
-        allChats!!.forEach {
-            db!!.addChat(it)
+        if (Shared.currentChat!!.messages.isNotEmpty()) {
+            allChats = allChats!!.plus(Shared.currentChat!!)
+            //update the DB
+            db!!.deleteAll()
+            allChats!!.forEach {
+                db!!.addChat(it)
+            }
         }
         db!!.close()
         super.finish()
