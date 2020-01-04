@@ -3,8 +3,8 @@ package com.example.spacediscovery.services
 import android.graphics.BitmapFactory
 import com.example.spacediscovery.ApplicationContext
 import com.example.spacediscovery.R
-import com.example.spacediscovery.bodiesandsatellites.CelestialBody
-import com.example.spacediscovery.bodiesandsatellites.CelestialBodyTypeEnum
+import com.example.spacediscovery.bodiesandsatellites.models.CelestialBody
+import com.example.spacediscovery.bodiesandsatellites.models.CelestialBodyTypeEnum
 import java.util.*
 
 class CelestialBodyService {

@@ -1,10 +1,8 @@
 package com.example.spacediscovery.bodiesandsatellites.api
 
-import com.example.spacediscovery.bodiesandsatellites.CelestialBody
+import com.example.spacediscovery.bodiesandsatellites.models.CelestialBody
 import io.reactivex.Single
-import okhttp3.ResponseBody
 import retrofit2.http.GET
-import retrofit2.http.Path
 
 interface CelestialBodyApi {
 

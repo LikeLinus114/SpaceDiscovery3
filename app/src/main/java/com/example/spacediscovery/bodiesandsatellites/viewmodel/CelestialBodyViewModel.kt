@@ -3,7 +3,7 @@ package com.example.spacediscovery.bodiesandsatellites.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.spacediscovery.bodiesandsatellites.CelestialBody
+import com.example.spacediscovery.bodiesandsatellites.models.CelestialBody
 import com.example.spacediscovery.bodiesandsatellites.api.CelestialBodyApi
 import com.example.spacediscovery.services.CelestialBodyService
 import io.reactivex.android.schedulers.AndroidSchedulers

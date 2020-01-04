@@ -1,4 +1,4 @@
-package com.example.spacediscovery.bodiesandsatellites
+package com.example.spacediscovery.bodiesandsatellites.models
 
 import android.graphics.Bitmap
 
