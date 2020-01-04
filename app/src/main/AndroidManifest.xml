@@ -30,11 +30,5 @@
         <activity
                 android:name=".chat.ChatActivity">
         </activity>
-        <activity
-                android:name=".stations.ChatHistoryActivity">
-        </activity>
-        <activity
-                android:name=".stations.ChatDetailsActivity">
-        </activity>
     </application>
 </manifest>
