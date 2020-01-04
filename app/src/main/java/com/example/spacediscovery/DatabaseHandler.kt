@@ -4,7 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.example.spacediscovery.chat.Chat
+import com.example.spacediscovery.chat.models.Chat
 import com.google.gson.Gson
 
 class DatabaseHandler(context: Context):

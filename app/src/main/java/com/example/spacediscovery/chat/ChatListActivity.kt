@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spacediscovery.DatabaseHandler
 import com.example.spacediscovery.R
 import com.example.spacediscovery.Shared
+import com.example.spacediscovery.chat.models.Chat
 import kotlinx.android.synthetic.main.activity_chat_list.*
 
 class ChatListActivity: AppCompatActivity() {

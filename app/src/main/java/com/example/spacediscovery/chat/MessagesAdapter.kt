@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spacediscovery.R
-import com.example.spacediscovery.stations.Message
+import com.example.spacediscovery.stations.models.Message
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 

@@ -1,4 +1,4 @@
-package com.example.spacediscovery.stations
+package com.example.spacediscovery.stations.models
 
 class Message(
     var text: String,

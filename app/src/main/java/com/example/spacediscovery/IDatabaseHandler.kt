@@ -1,6 +1,6 @@
 package com.example.spacediscovery
 
-import com.example.spacediscovery.chat.Chat
+import com.example.spacediscovery.chat.models.Chat
 
 interface IDatabaseHandler {
     fun addChat(chat: Chat)

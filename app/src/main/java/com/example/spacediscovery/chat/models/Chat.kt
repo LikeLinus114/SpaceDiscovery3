@@ -1,7 +1,7 @@
-package com.example.spacediscovery.chat
+package com.example.spacediscovery.chat.models
 
-import com.example.spacediscovery.stations.Message
-import com.example.spacediscovery.stations.Station
+import com.example.spacediscovery.stations.models.Message
+import com.example.spacediscovery.stations.models.Station
 import java.time.LocalDateTime
 
 class Chat(var station: Station, var messages: ArrayList<Message>, var isActive: Boolean) {
@@ -12,7 +12,13 @@ class Chat(var station: Station, var messages: ArrayList<Message>, var isActive:
 
     fun addMessage(message: String, sender: String): String {
         return if (message.isNotEmpty()) {
-            this.messages.add(Message(message, sender, LocalDateTime.now().toString()))
+            this.messages.add(
+                Message(
+                    message,
+                    sender,
+                    LocalDateTime.now().toString()
+                )
+            )
             "The message has been sent successfully"
         } else {
             "You did not enter a message"

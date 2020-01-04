@@ -13,6 +13,8 @@ import com.example.spacediscovery.R
 import com.example.spacediscovery.Shared
 import com.example.spacediscovery.chat.ChatActivity
 import com.example.spacediscovery.chat.ChatListActivity
+import com.example.spacediscovery.stations.models.Station
+import com.example.spacediscovery.stations.models.StationTypeEnum
 import java.util.*
 import kotlin.collections.ArrayList
 

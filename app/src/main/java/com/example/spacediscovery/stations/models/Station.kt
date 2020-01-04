@@ -1,4 +1,4 @@
-package com.example.spacediscovery.stations
+package com.example.spacediscovery.stations.models
 
 import android.graphics.Bitmap
 
@@ -13,7 +13,15 @@ class Station(
 ) {
 
     fun copyWithNoImage(): Station {
-        return Station(name, type, distance, signalQuality, description, null, null)
+        return Station(
+            name,
+            type,
+            distance,
+            signalQuality,
+            description,
+            null,
+            null
+        )
     }
 
     override fun toString(): String {

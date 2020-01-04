@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spacediscovery.DatabaseHandler
 import com.example.spacediscovery.R
 import com.example.spacediscovery.Shared
+import com.example.spacediscovery.chat.models.Chat
 import kotlinx.android.synthetic.main.activity_chat.*
 
 class ChatActivity: AppCompatActivity() {
@@ -57,7 +58,11 @@ class ChatActivity: AppCompatActivity() {
         db = DatabaseHandler(this)
         allChats = db!!.getAllChats().toHashSet()
         if (Shared.currentChat == null) {
-            Shared.currentChat = Chat(Shared.currentStation!!.copyWithNoImage(), arrayListOf(), true)
+            Shared.currentChat = Chat(
+                Shared.currentStation!!.copyWithNoImage(),
+                arrayListOf(),
+                true
+            )
             empty_messages_history_label.visibility = View.VISIBLE
         } else {
             allChats = allChats!!.minus(Shared.currentChat!!)

@@ -3,8 +3,8 @@ package com.example.spacediscovery.services
 import android.graphics.BitmapFactory
 import com.example.spacediscovery.ApplicationContext
 import com.example.spacediscovery.R
-import com.example.spacediscovery.stations.Station
-import com.example.spacediscovery.stations.StationTypeEnum
+import com.example.spacediscovery.stations.models.Station
+import com.example.spacediscovery.stations.models.StationTypeEnum
 import java.util.*
 
 class StationService {
