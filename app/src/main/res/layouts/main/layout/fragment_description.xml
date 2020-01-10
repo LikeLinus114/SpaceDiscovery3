@@ -37,11 +37,11 @@
             android:paddingEnd="30dp"
             android:text="The application is used for astronauts.
                 \nIt allows users to:
-                \n   - define their location in the solar system;
+                \n   - locate their current position;
                 \n   - look at the map of the galaxy;
                 \n   - get information about celestial bodies;
                 \n   - communicate with others.
-                \n\nYou can select required item in the menu
+                \n\nSelect the required item in the menu
                 \non the top left.
                 \n\n\n\n\n"
             android:textColor="@color/colorOrange"
