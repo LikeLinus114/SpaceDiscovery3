@@ -44,9 +44,6 @@ class LocationFragment: Fragment() {
 
         val tileView: TileView = activity!!.findViewById(R.id.tile_view)
         mIsRestoring = savedInstanceState != null
-        val data1: String = "tiles/phi-1000000-%1\$d_%2\$d.jpg"
-        println("ABCDCD")
-        println(data1)
         TileView.Builder(tileView)
             .setSize(16384, 13056)
             .defineZoomLevel("tiles/phi-1000000-%1\$d_%2\$d.jpg")
@@ -104,7 +101,7 @@ class LocationFragment: Fragment() {
             val y = coordinatePlugin.latitudeToUnscaledY(coordinate[0])
             val marker = ImageView(activity!!)
             marker.tag = coordinate
-            marker.setImageResource(R.drawable.ic_location)
+            marker.setImageResource(R.drawable.ic_menu_manage)
             marker.setOnClickListener(markerClickListener)
             if (count % 2 == 0) markerPlugin.addMarker(
                 marker,
