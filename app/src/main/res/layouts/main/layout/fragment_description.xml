@@ -18,8 +18,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
             android:src="@drawable/ic_planet"
             app:layout_constraintBottom_toTopOf="@+id/description"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,9 +39,11 @@
                 \nIt allows users to:
                 \n   - define their location in the solar system;
                 \n   - look at the map of the galaxy;
-                \n   - get information about celestial bodies.
+                \n   - get information about celestial bodies;
+                \n   - communicate with others.
                 \n\nYou can select required item in the menu
-                \non the top left."
+                \non the top left.
+                \n\n\n\n\n"
             android:textColor="@color/colorOrange"
             android:textSize="18dp"
             android:textStyle="bold"
