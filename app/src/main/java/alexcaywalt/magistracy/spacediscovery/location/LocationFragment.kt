@@ -60,7 +60,7 @@ class LocationFragment: Fragment() {
             .build()
     }
 
-    fun getBackgroundBitmap(): Bitmap? {
+    private fun getBackgroundBitmap(): Bitmap? {
         val options = BitmapFactory.Options()
         options.inPreferredConfig = Bitmap.Config.RGB_565
         return BitmapFactory.decodeResource(resources, R.drawable.ic_planet, options)
