@@ -1,0 +1,3 @@
+package alexcaywalt.magistracy.spacediscovery.di
+
+interface Injectable
