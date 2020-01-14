@@ -43,4 +43,9 @@ class SystemMapViewModel @Inject constructor(var api: SystemMapApi): ViewModel()
         )
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        disposable.clear()
+    }
+
 }

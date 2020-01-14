@@ -38,7 +38,6 @@ class GalaxyMapFragment: Fragment(), Injectable {
             observeViewModel(savedInstanceState)
         }
         update_button.performClick()
-        //SpaceMap(tile_view, savedInstanceState != null, "tiles")
     }
 
     private fun observeViewModel(savedInstanceState: Bundle?) {
