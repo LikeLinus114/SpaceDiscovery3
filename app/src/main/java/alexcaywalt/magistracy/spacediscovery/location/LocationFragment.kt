@@ -71,7 +71,7 @@ class LocationFragment: Fragment(), Injectable {
                     out.flush()
                     out.close()
                 }
-                SpaceMap(tile_view, savedInstanceState != null, context!!.getExternalFilesDir(null)!!.absolutePath + "/system_map")
+                SpaceMap(map_view, savedInstanceState != null, context!!.getExternalFilesDir(null)!!.absolutePath + "/system_map")
                 successfulAttempts++
                 last_update.text = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"))
                 connection_rate.text = String.format("%d", (successfulAttempts / (successfulAttempts + failedAttempts) * 100))
@@ -92,7 +92,7 @@ class LocationFragment: Fragment(), Injectable {
             error?.let {
                 if (it) {
                     Toast.makeText(this.context, "could not load the system map", Toast.LENGTH_SHORT).show()
-                    SpaceMap(tile_view, savedInstanceState != null, "tiles")
+                    SpaceMap(map_view, savedInstanceState != null, "tiles")
                     failedAttempts++
                     connection_rate.text = (successfulAttempts / (successfulAttempts + failedAttempts) * 100).toString() + "%"
                 }

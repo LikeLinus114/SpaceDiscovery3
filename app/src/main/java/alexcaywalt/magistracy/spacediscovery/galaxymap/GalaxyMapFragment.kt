@@ -65,7 +65,7 @@ class GalaxyMapFragment: Fragment(), Injectable {
                     out.flush()
                     out.close()
                 }
-                SpaceMap(tile_view, savedInstanceState != null, context!!.getExternalFilesDir(null)!!.absolutePath + "/galaxy_map")
+                SpaceMap(map_view, savedInstanceState != null, context!!.getExternalFilesDir(null)!!.absolutePath + "/galaxy_map")
                 update_request_status.text = "updated successfully"
                 update_request_status.setTextColor(resources.getColor(R.color.colorGreen, resources.newTheme()))
                 update_button.isEnabled = true
@@ -95,7 +95,7 @@ class GalaxyMapFragment: Fragment(), Injectable {
                     update_request_status.setTextColor(resources.getColor(R.color.colorRed, resources.newTheme()))
                     update_button.isEnabled = true
                     update_button.setTextColor(resources.getColor(R.color.colorYellow, resources.newTheme()))
-                    SpaceMap(tile_view, savedInstanceState != null, "tiles")
+                    SpaceMap(map_view, savedInstanceState != null, "tiles")
                 }
             }
         })
