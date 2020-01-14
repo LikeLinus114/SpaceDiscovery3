@@ -5,28 +5,6 @@ It allows users to:
 *** - get information about celestial bodies and satellites (CBS) (subitem: add new celestial bodies and satellites to the database (ANBS))
 *** - connect to the nearest stations (CNS).
 
---- DEVELOPMENT STEPS ---
-
-1. Create UI basement:
--- a) login;+
--- b) burger menu;+
--- c) basic functions (DLSS, GM, CBS, ANBS, CNS);
-2. Create and connect to database:
--- a) create database scheme;
--- b) create and configure database in the application;
-3. Fill local info:
--- a) GM;
--- b) CBS;
-4. Access to remote info:
--- a) configure test emulating servers or real ones;
--- b) configure data exchange;
-5. Fixes and little features:
--- a) validation;
--- b) GUI features;
--- c) best practices in android development;
-
-	
-
 The application can be used for communication and navigation when flying in spaceship in the Solar System. It is perspective application. Current technologies don't allow using things like that because
 space flight is still an experiment and not being churned out. As for the current situation, the application can be used as space communication and navigation simulator in thematic phone games.
 It can be useful for astronauts, space scientists. It is going to help them train, create the Solar System satellite network and investigate the things related with communication and navigation

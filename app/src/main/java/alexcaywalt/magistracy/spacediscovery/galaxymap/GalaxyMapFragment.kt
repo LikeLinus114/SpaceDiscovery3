@@ -18,6 +18,8 @@ import kotlinx.android.synthetic.main.fragment_galaxy_map.*
 import java.io.File
 import java.io.FileOutputStream
 import java.lang.Exception
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 import javax.inject.Inject
 
@@ -69,6 +71,7 @@ class GalaxyMapFragment: Fragment(), Injectable {
                 update_request_status.setTextColor(resources.getColor(R.color.colorGreen, resources.newTheme()))
                 update_button.isEnabled = true
                 update_button.setTextColor(resources.getColor(R.color.colorYellow, resources.newTheme()))
+                last_update.text = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"))
             } catch (e: Exception) {
                 e.printStackTrace()
             }
