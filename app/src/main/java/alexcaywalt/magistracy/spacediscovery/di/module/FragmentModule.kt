@@ -1,6 +1,7 @@
 package alexcaywalt.magistracy.spacediscovery.di.module
 
 import alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.BodiesSatellitesFragment
+import alexcaywalt.magistracy.spacediscovery.galaxymap.GalaxyMapFragment
 import alexcaywalt.magistracy.spacediscovery.stations.StationsFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -13,5 +14,8 @@ abstract class FragmentModule {
 
     @ContributesAndroidInjector
     abstract fun contributeStationsFragment(): StationsFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeGalaxyMapFragment(): GalaxyMapFragment
 
 }

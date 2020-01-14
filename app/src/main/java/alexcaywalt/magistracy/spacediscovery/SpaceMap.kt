@@ -13,7 +13,7 @@ import com.moagrius.tileview.plugins.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class SpaceMap(private var tileView: TileView, private var mIsRestoring: Boolean) {
+class SpaceMap(private var tileView: TileView, private var mIsRestoring: Boolean, directory: String) {
 
     companion object {
         private const val NORTH = -75.17261900652977
@@ -33,9 +33,9 @@ class SpaceMap(private var tileView: TileView, private var mIsRestoring: Boolean
     init {
         TileView.Builder(tileView)
             .setSize(16384, 13056)
-            .defineZoomLevel("tiles/phi-1000000-%1\$d_%2\$d.jpg")
-            .defineZoomLevel(1, "tiles/phi-500000-%1\$d_%2\$d.jpg")
-            .defineZoomLevel(2, "tiles/phi-250000-%1\$d_%2\$d.jpg")
+            .defineZoomLevel("$directory/phi-1000000-%1\$d_%2\$d.jpg")
+            .defineZoomLevel(1, "$directory/phi-500000-%1\$d_%2\$d.jpg")
+            .defineZoomLevel(2, "$directory/phi-250000-%1\$d_%2\$d.jpg")
             .installPlugin(MarkerPlugin(tileView.context!!))
             //.installPlugin(ScalingMarkerPlugin(activity!!))
             .installPlugin(InfoWindowPlugin(getInfoView()))

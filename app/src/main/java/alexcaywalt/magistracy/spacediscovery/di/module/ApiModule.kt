@@ -1,6 +1,7 @@
 package alexcaywalt.magistracy.spacediscovery.di.module
 
 import alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.api.CelestialBodyApi
+import alexcaywalt.magistracy.spacediscovery.galaxymap.api.GalaxyMapApi
 import alexcaywalt.magistracy.spacediscovery.stations.api.StationsApi
 import dagger.Module
 import dagger.Provides
@@ -22,6 +23,13 @@ object ApiModule {
     @JvmStatic
     internal fun provideStationsApi(retrofit: Retrofit): StationsApi {
         return retrofit.create(StationsApi::class.java)
+    }
+
+    @Provides
+    @Reusable
+    @JvmStatic
+    internal fun provideGalaxyMapApi(retrofit: Retrofit): GalaxyMapApi {
+        return retrofit.create(GalaxyMapApi::class.java)
     }
 
 }

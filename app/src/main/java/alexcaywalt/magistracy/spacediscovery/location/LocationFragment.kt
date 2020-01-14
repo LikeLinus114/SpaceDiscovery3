@@ -17,7 +17,7 @@ class LocationFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        SpaceMap(tile_view, savedInstanceState != null)
+        SpaceMap(tile_view, savedInstanceState != null, "tiles")
     }
 
 }
