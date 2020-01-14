@@ -101,4 +101,24 @@
             app:layout_constraintTop_toTopOf="@+id/galaxy_map_data_section"
             app:layout_constraintBottom_toBottomOf="@id/galaxy_map_data_section" />
 
+    <ProgressBar
+            android:id="@+id/loading_spinner"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tile_view"
+            app:layout_constraintBottom_toBottomOf="@id/tile_view"
+            app:layout_constraintStart_toStartOf="@id/tile_view"
+            app:layout_constraintEnd_toEndOf="@id/tile_view" />
+
+    <View
+            android:id="@+id/shadow_view"
+            android:background="@color/shadowViewColor"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@id/tile_view"
+            app:layout_constraintBottom_toBottomOf="@id/tile_view"
+            app:layout_constraintStart_toStartOf="@id/tile_view"
+            app:layout_constraintEnd_toEndOf="@id/tile_view" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

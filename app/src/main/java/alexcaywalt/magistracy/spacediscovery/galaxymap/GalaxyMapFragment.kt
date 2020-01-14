@@ -80,6 +80,11 @@ class GalaxyMapFragment: Fragment(), Injectable {
                 update_request_status.setTextColor(resources.getColor(R.color.colorYellow, resources.newTheme()))
                 update_button.isEnabled = false
                 update_button.setTextColor(resources.getColor(R.color.colorYellowDark, resources.newTheme()))
+                loading_spinner.visibility = View.VISIBLE
+                shadow_view.visibility = View.VISIBLE
+            } else {
+                loading_spinner.visibility = View.INVISIBLE
+                shadow_view.visibility = View.INVISIBLE
             }
         })
         viewModel.error.observe(this, Observer { error ->

@@ -2,6 +2,7 @@ package alexcaywalt.magistracy.spacediscovery.di.module
 
 import alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.api.CelestialBodyApi
 import alexcaywalt.magistracy.spacediscovery.galaxymap.api.GalaxyMapApi
+import alexcaywalt.magistracy.spacediscovery.location.api.SystemMapApi
 import alexcaywalt.magistracy.spacediscovery.stations.api.StationsApi
 import dagger.Module
 import dagger.Provides
@@ -30,6 +31,13 @@ object ApiModule {
     @JvmStatic
     internal fun provideGalaxyMapApi(retrofit: Retrofit): GalaxyMapApi {
         return retrofit.create(GalaxyMapApi::class.java)
+    }
+
+    @Provides
+    @Reusable
+    @JvmStatic
+    internal fun provideSystemMapApi(retrofit: Retrofit): SystemMapApi {
+        return retrofit.create(SystemMapApi::class.java)
     }
 
 }
