@@ -1,8 +1,8 @@
-package alexcaywalt.magistracy.spacediscovery.bodiesandsatellites
+package alexcaywalt.magistracy.spacediscovery.bodies_and_satellites
 
 import alexcaywalt.magistracy.spacediscovery.R
-import alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.models.CelestialBody
-import alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.models.CelestialBodyTypeEnum
+import alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.models.CelestialBody
+import alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.models.CelestialBodyTypeEnum
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View

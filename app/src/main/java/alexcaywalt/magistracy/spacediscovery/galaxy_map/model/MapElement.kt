@@ -1,4 +1,4 @@
-package alexcaywalt.magistracy.spacediscovery.galaxymap.model
+package alexcaywalt.magistracy.spacediscovery.galaxy_map.model
 
 class MapElement(
     var name: String,

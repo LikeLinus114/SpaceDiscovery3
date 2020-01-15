@@ -1,6 +1,6 @@
-package alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.api
+package alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.api
 
-import alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.models.CelestialBody
+import alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.models.CelestialBody
 import io.reactivex.Single
 import retrofit2.http.GET
 

@@ -1,10 +1,10 @@
-package alexcaywalt.magistracy.spacediscovery.galaxymap
+package alexcaywalt.magistracy.spacediscovery.galaxy_map
 
 import alexcaywalt.magistracy.spacediscovery.MapUtils.Companion.addTilesToInternalStorage
 import alexcaywalt.magistracy.spacediscovery.R
 import alexcaywalt.magistracy.spacediscovery.SpaceMap
 import alexcaywalt.magistracy.spacediscovery.di.Injectable
-import alexcaywalt.magistracy.spacediscovery.galaxymap.viewmodel.GalaxyMapViewModel
+import alexcaywalt.magistracy.spacediscovery.galaxy_map.viewmodel.GalaxyMapViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

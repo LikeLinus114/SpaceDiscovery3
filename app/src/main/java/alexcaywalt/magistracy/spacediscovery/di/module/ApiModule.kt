@@ -1,7 +1,7 @@
 package alexcaywalt.magistracy.spacediscovery.di.module
 
-import alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.api.CelestialBodyApi
-import alexcaywalt.magistracy.spacediscovery.galaxymap.api.GalaxyMapApi
+import alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.api.CelestialBodyApi
+import alexcaywalt.magistracy.spacediscovery.galaxy_map.api.GalaxyMapApi
 import alexcaywalt.magistracy.spacediscovery.location.api.SystemMapApi
 import alexcaywalt.magistracy.spacediscovery.stations.api.StationsApi
 import dagger.Module

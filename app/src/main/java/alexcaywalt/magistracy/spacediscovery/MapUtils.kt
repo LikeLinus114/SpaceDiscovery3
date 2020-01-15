@@ -1,6 +1,6 @@
 package alexcaywalt.magistracy.spacediscovery
 
-import alexcaywalt.magistracy.spacediscovery.galaxymap.model.MapElement
+import alexcaywalt.magistracy.spacediscovery.galaxy_map.model.MapElement
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

@@ -1,8 +1,8 @@
-package alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.viewmodel
+package alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.viewmodel
 
 import alexcaywalt.magistracy.spacediscovery.ViewModelResult
-import alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.api.CelestialBodyApi
-import alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.models.CelestialBody
+import alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.api.CelestialBodyApi
+import alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.models.CelestialBody
 import alexcaywalt.magistracy.spacediscovery.services.CelestialBodyService
 import android.util.Log
 import androidx.lifecycle.MutableLiveData

@@ -1,7 +1,7 @@
 package alexcaywalt.magistracy.spacediscovery.location.viewmodel
 
 import alexcaywalt.magistracy.spacediscovery.ViewModelResult
-import alexcaywalt.magistracy.spacediscovery.galaxymap.model.MapElement
+import alexcaywalt.magistracy.spacediscovery.galaxy_map.model.MapElement
 import alexcaywalt.magistracy.spacediscovery.location.api.SystemMapApi
 import android.util.Log
 import androidx.lifecycle.MutableLiveData

@@ -2,8 +2,8 @@ package alexcaywalt.magistracy.spacediscovery.services
 
 import alexcaywalt.magistracy.spacediscovery.ApplicationContext
 import alexcaywalt.magistracy.spacediscovery.R
-import alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.models.CelestialBody
-import alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.models.CelestialBodyTypeEnum
+import alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.models.CelestialBody
+import alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.models.CelestialBodyTypeEnum
 import android.graphics.BitmapFactory
 import java.util.*
 

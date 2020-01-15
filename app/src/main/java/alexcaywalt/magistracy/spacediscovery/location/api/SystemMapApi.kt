@@ -1,6 +1,6 @@
 package alexcaywalt.magistracy.spacediscovery.location.api
 
-import alexcaywalt.magistracy.spacediscovery.galaxymap.model.MapElement
+import alexcaywalt.magistracy.spacediscovery.galaxy_map.model.MapElement
 import io.reactivex.Single
 import retrofit2.http.GET
 

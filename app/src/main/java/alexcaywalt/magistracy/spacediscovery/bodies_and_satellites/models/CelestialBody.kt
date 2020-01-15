@@ -1,4 +1,4 @@
-package alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.models
+package alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.models
 
 import android.graphics.Bitmap
 

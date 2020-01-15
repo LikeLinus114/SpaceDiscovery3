@@ -1,7 +1,7 @@
 package alexcaywalt.magistracy.spacediscovery.di.module
 
-import alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.BodiesSatellitesFragment
-import alexcaywalt.magistracy.spacediscovery.galaxymap.GalaxyMapFragment
+import alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.BodiesSatellitesFragment
+import alexcaywalt.magistracy.spacediscovery.galaxy_map.GalaxyMapFragment
 import alexcaywalt.magistracy.spacediscovery.location.LocationFragment
 import alexcaywalt.magistracy.spacediscovery.stations.StationsFragment
 import dagger.Module

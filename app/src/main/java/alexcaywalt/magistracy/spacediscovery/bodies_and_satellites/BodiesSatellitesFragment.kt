@@ -1,4 +1,4 @@
-package alexcaywalt.magistracy.spacediscovery.bodiesandsatellites
+package alexcaywalt.magistracy.spacediscovery.bodies_and_satellites
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import alexcaywalt.magistracy.spacediscovery.R
-import alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.viewmodel.CelestialBodyViewModel
+import alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.viewmodel.CelestialBodyViewModel
 import alexcaywalt.magistracy.spacediscovery.di.Injectable
 import alexcaywalt.magistracy.spacediscovery.services.CelestialBodyService
 import kotlinx.android.synthetic.main.app_bar_side_pane.*
