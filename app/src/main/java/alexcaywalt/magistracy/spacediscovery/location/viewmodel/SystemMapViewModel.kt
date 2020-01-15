@@ -1,5 +1,6 @@
 package alexcaywalt.magistracy.spacediscovery.location.viewmodel
 
+import alexcaywalt.magistracy.spacediscovery.ViewModelResult
 import alexcaywalt.magistracy.spacediscovery.galaxymap.model.MapElement
 import alexcaywalt.magistracy.spacediscovery.location.api.SystemMapApi
 import android.util.Log
@@ -14,13 +15,10 @@ import javax.inject.Inject
 class SystemMapViewModel @Inject constructor(var api: SystemMapApi): ViewModel() {
 
     val disposable = CompositeDisposable()
-    val loading = MutableLiveData<Boolean>()
-
-    val systemMapElements = MutableLiveData<List<MapElement>>()
-    val error = MutableLiveData<Boolean>()
+    val systemMapElements = MutableLiveData<ViewModelResult<List<MapElement>>>()
 
     fun fetchSystemMap() {
-        loading.value = true
+        systemMapElements.value =  ViewModelResult(arrayListOf(), loading = true, error = false)
         disposable.add(
             api.getSystemMapElements()
                 .subscribeOn(Schedulers.newThread())
@@ -28,15 +26,12 @@ class SystemMapViewModel @Inject constructor(var api: SystemMapApi): ViewModel()
                 .subscribeWith(object: DisposableSingleObserver<List<MapElement>>() {
                     override fun onSuccess(receivedElements: List<MapElement>) {
                         Log.i("System Map ViewModel", "System Map elements have been received successfully")
-                        systemMapElements.value = receivedElements
-                        error.value = false
-                        loading.value = false
+                        systemMapElements.value =  ViewModelResult(receivedElements, loading = false, error = false)
                     }
 
                     override fun onError(e: Throwable) {
                         Log.e("System Map ViewModel", "System Map elements receiving error", e)
-                        error.value = true
-                        loading.value = false
+                        systemMapElements.value =  ViewModelResult(arrayListOf(), loading = false, error = true)
                     }
 
                 })

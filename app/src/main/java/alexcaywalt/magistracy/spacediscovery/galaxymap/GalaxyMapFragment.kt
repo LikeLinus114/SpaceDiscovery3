@@ -43,61 +43,61 @@ class GalaxyMapFragment: Fragment(), Injectable {
     }
 
     private fun observeViewModel(savedInstanceState: Bundle?) {
-        viewModel.galaxyMapElements.observe(this, Observer { elements ->
-            try {
-                //create a directory for storing galaxy map elements
-                val dir = File(context!!.getExternalFilesDir(null)!!.absolutePath + "/galaxy_map")
-                if (dir.mkdir()) {
-                    Log.i("Galaxy Map Fragment", "Directory created")
-                } else {
-                    //if a directory has already been created
-                    Log.i("Galaxy Map Fragment", "Directory is not created")
+        viewModel.galaxyMapElements.removeObservers(activity!!)
+        viewModel.galaxyMapElements.observe(activity!!, Observer { elements ->
+            when {
+                elements.loading -> {
+                    update_request_status.text = "in processing"
+                    update_request_status.setTextColor(resources.getColor(R.color.colorYellow, resources.newTheme()))
+                    update_button.isEnabled = false
+                    update_button.setTextColor(resources.getColor(R.color.colorYellowDark, resources.newTheme()))
+                    loading_spinner.visibility = View.VISIBLE
+                    shadow_view.visibility = View.VISIBLE
                 }
-                elements.forEach {
-                    //decode a byte array from the string
-                    val byteArray = Base64.getMimeDecoder().decode(it.encodedImage)
-                    //decode a bitmap from the byte array
-                    val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
-                    //create an image file
-                    val imageFile = File(context!!.getExternalFilesDir(null)!!.absolutePath + "/galaxy_map", it.name)
-                    val out = FileOutputStream(imageFile)
-                    //save the image to its file
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
-                    out.flush()
-                    out.close()
-                }
-                SpaceMap(map_view, savedInstanceState != null, context!!.getExternalFilesDir(null)!!.absolutePath + "/galaxy_map")
-                update_request_status.text = "updated successfully"
-                update_request_status.setTextColor(resources.getColor(R.color.colorGreen, resources.newTheme()))
-                update_button.isEnabled = true
-                update_button.setTextColor(resources.getColor(R.color.colorYellow, resources.newTheme()))
-                last_update.text = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"))
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        })
-        viewModel.loading.observe(this, Observer { loading ->
-            if (loading) {
-                update_request_status.text = "in processing"
-                update_request_status.setTextColor(resources.getColor(R.color.colorYellow, resources.newTheme()))
-                update_button.isEnabled = false
-                update_button.setTextColor(resources.getColor(R.color.colorYellowDark, resources.newTheme()))
-                loading_spinner.visibility = View.VISIBLE
-                shadow_view.visibility = View.VISIBLE
-            } else {
-                loading_spinner.visibility = View.INVISIBLE
-                shadow_view.visibility = View.INVISIBLE
-            }
-        })
-        viewModel.error.observe(this, Observer { error ->
-            error?.let {
-                if (it) {
-                    Toast.makeText(this.context, "could not load the galaxy map", Toast.LENGTH_SHORT).show()
+                elements.error -> {
+                    loading_spinner.visibility = View.GONE
+                    shadow_view.visibility = View.GONE
                     update_request_status.text = "could not update"
                     update_request_status.setTextColor(resources.getColor(R.color.colorRed, resources.newTheme()))
                     update_button.isEnabled = true
                     update_button.setTextColor(resources.getColor(R.color.colorYellow, resources.newTheme()))
+                    Toast.makeText(this.context, "could not load the galaxy map", Toast.LENGTH_SHORT).show()
                     SpaceMap(map_view, savedInstanceState != null, "tiles")
+                }
+                else -> {
+                    loading_spinner.visibility = View.GONE
+                    shadow_view.visibility = View.GONE
+                    try {
+                        //create a directory for storing galaxy map elements
+                        val dir = File(context!!.getExternalFilesDir(null)!!.absolutePath + "/galaxy_map")
+                        if (dir.mkdir()) {
+                            Log.i("Galaxy Map Fragment", "Directory created")
+                        } else {
+                            //if a directory has already been created
+                            Log.i("Galaxy Map Fragment", "Directory is not created")
+                        }
+                        elements.data.forEach {
+                            //decode a byte array from the string
+                            val byteArray = Base64.getMimeDecoder().decode(it.encodedImage)
+                            //decode a bitmap from the byte array
+                            val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+                            //create an image file
+                            val imageFile = File(context!!.getExternalFilesDir(null)!!.absolutePath + "/galaxy_map", it.name)
+                            val out = FileOutputStream(imageFile)
+                            //save the image to its file
+                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
+                            out.flush()
+                            out.close()
+                        }
+                        SpaceMap(map_view, savedInstanceState != null, context!!.getExternalFilesDir(null)!!.absolutePath + "/galaxy_map")
+                        update_request_status.text = "updated successfully"
+                        update_request_status.setTextColor(resources.getColor(R.color.colorGreen, resources.newTheme()))
+                        update_button.isEnabled = true
+                        update_button.setTextColor(resources.getColor(R.color.colorYellow, resources.newTheme()))
+                        last_update.text = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"))
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
                 }
             }
         })

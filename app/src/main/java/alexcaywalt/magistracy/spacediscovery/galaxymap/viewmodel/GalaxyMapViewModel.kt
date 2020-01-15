@@ -1,5 +1,6 @@
 package alexcaywalt.magistracy.spacediscovery.galaxymap.viewmodel
 
+import alexcaywalt.magistracy.spacediscovery.ViewModelResult
 import alexcaywalt.magistracy.spacediscovery.galaxymap.api.GalaxyMapApi
 import alexcaywalt.magistracy.spacediscovery.galaxymap.model.MapElement
 import android.util.Log
@@ -14,13 +15,10 @@ import javax.inject.Inject
 class GalaxyMapViewModel @Inject constructor(var api: GalaxyMapApi): ViewModel() {
 
     val disposable = CompositeDisposable()
-    val loading = MutableLiveData<Boolean>()
-
-    val galaxyMapElements = MutableLiveData<List<MapElement>>()
-    val error = MutableLiveData<Boolean>()
+    val galaxyMapElements = MutableLiveData<ViewModelResult<List<MapElement>>>()
 
     fun fetchGalaxyMap() {
-        loading.value = true
+        galaxyMapElements.value =  ViewModelResult(arrayListOf(), loading = true, error = false)
         disposable.add(
             api.getGalaxyMapElements()
                 .subscribeOn(Schedulers.newThread())
@@ -28,19 +26,21 @@ class GalaxyMapViewModel @Inject constructor(var api: GalaxyMapApi): ViewModel()
                 .subscribeWith(object: DisposableSingleObserver<List<MapElement>>() {
                     override fun onSuccess(receivedElements: List<MapElement>) {
                         Log.i("Galaxy Map ViewModel", "Galaxy Map elements have been received successfully")
-                        galaxyMapElements.value = receivedElements
-                        error.value = false
-                        loading.value = false
+                        galaxyMapElements.value =  ViewModelResult(receivedElements, loading = false, error = false)
                     }
 
                     override fun onError(e: Throwable) {
                         Log.e("Galaxy Map ViewModel", "Galaxy Map elements receiving error", e)
-                        error.value = true
-                        loading.value = false
+                        galaxyMapElements.value =  ViewModelResult(arrayListOf(), loading = false, error = true)
                     }
 
                 })
         )
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        disposable.clear()
     }
 
 }

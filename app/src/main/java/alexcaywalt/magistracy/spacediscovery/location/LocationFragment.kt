@@ -48,53 +48,53 @@ class LocationFragment: Fragment(), Injectable {
     }
 
     private fun observeViewModel(savedInstanceState: Bundle?) {
-        viewModel.systemMapElements.observe(this, Observer { elements ->
-            try {
-                //create a directory for storing system map elements
-                val dir = File(context!!.getExternalFilesDir(null)!!.absolutePath + "/system_map")
-                if (dir.mkdir()) {
-                    Log.i("System Map Fragment", "Directory created")
-                } else {
-                    //if a directory has already been created
-                    Log.i("System Map Fragment", "Directory is not created")
+        viewModel.systemMapElements.removeObservers(activity!!)
+        viewModel.systemMapElements.observe(activity!!, Observer { elements ->
+            when {
+                elements.loading -> {
+                    loading_spinner.visibility = View.VISIBLE
+                    shadow_view.visibility = View.VISIBLE
                 }
-                elements.forEach {
-                    //decode a byte array from the string
-                    val byteArray = Base64.getMimeDecoder().decode(it.encodedImage)
-                    //decode a bitmap from the byte array
-                    val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
-                    //create an image file
-                    val imageFile = File(context!!.getExternalFilesDir(null)!!.absolutePath + "/system_map", it.name)
-                    val out = FileOutputStream(imageFile)
-                    //save the image to its file
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
-                    out.flush()
-                    out.close()
-                }
-                SpaceMap(map_view, savedInstanceState != null, context!!.getExternalFilesDir(null)!!.absolutePath + "/system_map")
-                successfulAttempts++
-                last_update.text = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"))
-                connection_rate.text = String.format("%d", (successfulAttempts / (successfulAttempts + failedAttempts) * 100))
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        })
-        viewModel.loading.observe(this, Observer { loading ->
-            if (loading) {
-                loading_spinner.visibility = View.VISIBLE
-                shadow_view.visibility = View.VISIBLE
-            } else {
-                loading_spinner.visibility = View.INVISIBLE
-                shadow_view.visibility = View.INVISIBLE
-            }
-        })
-        viewModel.error.observe(this, Observer { error ->
-            error?.let {
-                if (it) {
+                elements.error -> {
+                    loading_spinner.visibility = View.GONE
+                    shadow_view.visibility = View.GONE
                     Toast.makeText(this.context, "could not load the system map", Toast.LENGTH_SHORT).show()
                     SpaceMap(map_view, savedInstanceState != null, "tiles")
                     failedAttempts++
-                    connection_rate.text = (successfulAttempts / (successfulAttempts + failedAttempts) * 100).toString() + "%"
+                    connection_rate.text = String.format("%d%%", (successfulAttempts / (successfulAttempts + failedAttempts) * 100))
+                }
+                else -> {
+                    loading_spinner.visibility = View.GONE
+                    shadow_view.visibility = View.GONE
+                    try {
+                        //create a directory for storing system map elements
+                        val dir = File(context!!.getExternalFilesDir(null)!!.absolutePath + "/system_map")
+                        if (dir.mkdir()) {
+                            Log.i("System Map Fragment", "Directory created")
+                        } else {
+                            //if a directory has already been created
+                            Log.i("System Map Fragment", "Directory is not created")
+                        }
+                        elements.data.forEach {
+                            //decode a byte array from the string
+                            val byteArray = Base64.getMimeDecoder().decode(it.encodedImage)
+                            //decode a bitmap from the byte array
+                            val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+                            //create an image file
+                            val imageFile = File(context!!.getExternalFilesDir(null)!!.absolutePath + "/system_map", it.name)
+                            val out = FileOutputStream(imageFile)
+                            //save the image to its file
+                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
+                            out.flush()
+                            out.close()
+                        }
+                        SpaceMap(map_view, savedInstanceState != null, context!!.getExternalFilesDir(null)!!.absolutePath + "/system_map")
+                        successfulAttempts++
+                        last_update.text = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"))
+                        connection_rate.text = String.format("%d%%", (successfulAttempts / (successfulAttempts + failedAttempts) * 100))
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
                 }
             }
         })
