@@ -1,20 +1,18 @@
 package alexcaywalt.magistracy.spacediscovery.galaxy_map.viewmodel
 
+import alexcaywalt.magistracy.spacediscovery.BasicViewModel
 import alexcaywalt.magistracy.spacediscovery.ViewModelResult
 import alexcaywalt.magistracy.spacediscovery.galaxy_map.api.GalaxyMapApi
 import alexcaywalt.magistracy.spacediscovery.galaxy_map.model.MapElement
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class GalaxyMapViewModel @Inject constructor(var api: GalaxyMapApi): ViewModel() {
+class GalaxyMapViewModel @Inject constructor(var api: GalaxyMapApi): BasicViewModel() {
 
-    val disposable = CompositeDisposable()
     val galaxyMapElements = MutableLiveData<ViewModelResult<List<MapElement>>>()
 
     fun fetchGalaxyMap() {
@@ -36,11 +34,6 @@ class GalaxyMapViewModel @Inject constructor(var api: GalaxyMapApi): ViewModel()
 
                 })
         )
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        disposable.clear()
     }
 
 }

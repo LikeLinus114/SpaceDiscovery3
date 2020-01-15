@@ -1,5 +1,6 @@
 package alexcaywalt.magistracy.spacediscovery.stations.viewmodel
 
+import alexcaywalt.magistracy.spacediscovery.BasicViewModel
 import alexcaywalt.magistracy.spacediscovery.ViewModelResult
 import alexcaywalt.magistracy.spacediscovery.services.StationService
 import alexcaywalt.magistracy.spacediscovery.stations.api.StationsApi
@@ -13,9 +14,8 @@ import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class StationViewModel @Inject constructor(var api: StationsApi): ViewModel() {
+class StationViewModel @Inject constructor(var api: StationsApi): BasicViewModel() {
 
-    val disposable = CompositeDisposable()
     val stations = MutableLiveData<ViewModelResult<List<Station>>>()
 
     fun fetchStations() {
@@ -41,11 +41,6 @@ class StationViewModel @Inject constructor(var api: StationsApi): ViewModel() {
 
                 })
         )
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        disposable.clear()
     }
 
 }

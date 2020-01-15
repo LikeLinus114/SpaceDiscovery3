@@ -1,21 +1,19 @@
 package alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.viewmodel
 
+import alexcaywalt.magistracy.spacediscovery.BasicViewModel
 import alexcaywalt.magistracy.spacediscovery.ViewModelResult
 import alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.api.CelestialBodyApi
 import alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.models.CelestialBody
 import alexcaywalt.magistracy.spacediscovery.services.CelestialBodyService
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class CelestialBodyViewModel @Inject constructor(var api: CelestialBodyApi): ViewModel() {
+class CelestialBodyViewModel @Inject constructor(var api: CelestialBodyApi): BasicViewModel() {
 
-    val disposable = CompositeDisposable()
     val celestialBodies = MutableLiveData<ViewModelResult<List<CelestialBody>>>()
 
     fun fetchBodiesAndSatellites() {
@@ -41,11 +39,6 @@ class CelestialBodyViewModel @Inject constructor(var api: CelestialBodyApi): Vie
 
                 })
         )
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        disposable.clear()
     }
 
 }

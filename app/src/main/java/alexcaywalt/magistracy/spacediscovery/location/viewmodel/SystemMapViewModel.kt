@@ -1,20 +1,18 @@
 package alexcaywalt.magistracy.spacediscovery.location.viewmodel
 
+import alexcaywalt.magistracy.spacediscovery.BasicViewModel
 import alexcaywalt.magistracy.spacediscovery.ViewModelResult
 import alexcaywalt.magistracy.spacediscovery.galaxy_map.model.MapElement
 import alexcaywalt.magistracy.spacediscovery.location.api.SystemMapApi
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class SystemMapViewModel @Inject constructor(var api: SystemMapApi): ViewModel() {
+class SystemMapViewModel @Inject constructor(var api: SystemMapApi): BasicViewModel() {
 
-    val disposable = CompositeDisposable()
     val systemMapElements = MutableLiveData<ViewModelResult<List<MapElement>>>()
 
     fun fetchSystemMap() {
@@ -36,11 +34,6 @@ class SystemMapViewModel @Inject constructor(var api: SystemMapApi): ViewModel()
 
                 })
         )
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        disposable.clear()
     }
 
 }
