@@ -39,41 +39,37 @@ class StationsFragment: Fragment(), Injectable {
     }
 
     private fun observeViewModel() {
-        viewModel.stations.observe(this, Observer { stations ->
-            val preparedStations = StationService.prepareStationsData(stations)
-            stationsAdapter.updateStations(preparedStations)
-            if (preparedStations.isEmpty()) {
-                no_stations_label.visibility = View.VISIBLE
-                no_stations_image.visibility = View.VISIBLE
-            } else {
-                no_stations_label.visibility = View.INVISIBLE
-                no_stations_image.visibility = View.INVISIBLE
-            }
-        })
-        viewModel.loading.observe(this, Observer { loading ->
-            loading?.let { enableSpinner(it) }
-        })
-        viewModel.error.observe(this, Observer { error ->
-            error?.let {
-                if (it) {
+        viewModel.stations.removeObservers(activity!!)
+        viewModel.stations.observe(activity!!, Observer { stations ->
+            when {
+                stations.loading -> {
+                    loading_spinner.visibility = View.VISIBLE
+                    shadow_view.visibility = View.VISIBLE
+                    no_stations_label.visibility = View.GONE
+                    no_stations_image.visibility = View.GONE
+                }
+                stations.error -> {
+                    loading_spinner.visibility = View.GONE
+                    shadow_view.visibility = View.GONE
                     no_stations_label.visibility = View.VISIBLE
                     no_stations_image.visibility = View.VISIBLE
                     Toast.makeText(this.context, "could not load the stations info", Toast.LENGTH_SHORT).show()
                 }
+                else -> {
+                    val preparedStations = StationService.prepareStationsData(stations.data)
+                    stationsAdapter.updateStations(preparedStations)
+                    loading_spinner.visibility = View.GONE
+                    shadow_view.visibility = View.GONE
+                    if (preparedStations.isEmpty()) {
+                        no_stations_label.visibility = View.VISIBLE
+                        no_stations_image.visibility = View.VISIBLE
+                    } else {
+                        no_stations_label.visibility = View.GONE
+                        no_stations_image.visibility = View.GONE
+                    }
+                }
             }
         })
-    }
-
-    private fun enableSpinner(isEnabled: Boolean) {
-        if (isEnabled) {
-            loading_spinner.visibility = View.VISIBLE
-            shadow_view.visibility = View.VISIBLE
-            no_stations_label.visibility = View.INVISIBLE
-            no_stations_image.visibility = View.INVISIBLE
-        } else {
-            loading_spinner.visibility = View.GONE
-            shadow_view.visibility = View.GONE
-        }
     }
 
 }

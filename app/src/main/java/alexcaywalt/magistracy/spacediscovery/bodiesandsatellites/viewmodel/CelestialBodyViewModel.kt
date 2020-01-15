@@ -1,5 +1,6 @@
 package alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.viewmodel
 
+import alexcaywalt.magistracy.spacediscovery.ViewModelResult
 import alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.api.CelestialBodyApi
 import alexcaywalt.magistracy.spacediscovery.bodiesandsatellites.models.CelestialBody
 import alexcaywalt.magistracy.spacediscovery.services.CelestialBodyService
@@ -15,13 +16,10 @@ import javax.inject.Inject
 class CelestialBodyViewModel @Inject constructor(var api: CelestialBodyApi): ViewModel() {
 
     val disposable = CompositeDisposable()
-    val loading = MutableLiveData<Boolean>()
-
-    val celestialBodies = MutableLiveData<List<CelestialBody>>()
-    val error = MutableLiveData<Boolean>()
+    val celestialBodies = MutableLiveData<ViewModelResult<List<CelestialBody>>>()
 
     fun fetchBodiesAndSatellites() {
-        loading.value = true
+        celestialBodies.value = ViewModelResult(arrayListOf(), loading = true, error = false)
         disposable.add(
             api.getBodiesAndSatellites()
                 .subscribeOn(Schedulers.newThread())
@@ -29,15 +27,16 @@ class CelestialBodyViewModel @Inject constructor(var api: CelestialBodyApi): Vie
                 .subscribeWith(object: DisposableSingleObserver<List<CelestialBody>>() {
                     override fun onSuccess(receivedBodies: List<CelestialBody>) {
                         Log.i("Celestial Body ViewModel", "Celestial bodies have been received successfully")
-                        celestialBodies.value = CelestialBodyService.prepareBodiesData(receivedBodies)
-                        error.value = false
-                        loading.value = false
+                        celestialBodies.value = ViewModelResult(
+                            CelestialBodyService.prepareBodiesData(receivedBodies),
+                            loading = false,
+                            error = false
+                        )
                     }
 
                     override fun onError(e: Throwable) {
                         Log.e("Celestial Body ViewModel", "Celestial bodies receiving error", e)
-                        error.value = true
-                        loading.value = false
+                        celestialBodies.value = ViewModelResult(arrayListOf(), loading = false, error = true)
                     }
 
                 })

@@ -1,5 +1,6 @@
 package alexcaywalt.magistracy.spacediscovery.stations.viewmodel
 
+import alexcaywalt.magistracy.spacediscovery.ViewModelResult
 import alexcaywalt.magistracy.spacediscovery.services.StationService
 import alexcaywalt.magistracy.spacediscovery.stations.api.StationsApi
 import alexcaywalt.magistracy.spacediscovery.stations.models.Station
@@ -15,13 +16,10 @@ import javax.inject.Inject
 class StationViewModel @Inject constructor(var api: StationsApi): ViewModel() {
 
     val disposable = CompositeDisposable()
-    val loading = MutableLiveData<Boolean>()
-
-    val stations = MutableLiveData<List<Station>>()
-    val error = MutableLiveData<Boolean>()
+    val stations = MutableLiveData<ViewModelResult<List<Station>>>()
 
     fun fetchStations() {
-        loading.value = true
+        stations.value = ViewModelResult(arrayListOf(), loading = true, error = false)
         disposable.add(
             api.getStations()
                 .subscribeOn(Schedulers.newThread())
@@ -29,15 +27,16 @@ class StationViewModel @Inject constructor(var api: StationsApi): ViewModel() {
                 .subscribeWith(object: DisposableSingleObserver<List<Station>>() {
                     override fun onSuccess(receivedStations: List<Station>) {
                         Log.i("Station ViewModel", "Stations have been received successfully")
-                        stations.value = StationService.prepareStationsData(receivedStations)
-                        error.value = false
-                        loading.value = false
+                        stations.value = ViewModelResult(
+                            StationService.prepareStationsData(receivedStations),
+                            loading = false,
+                            error = false
+                        )
                     }
 
                     override fun onError(e: Throwable) {
                         Log.e("Station ViewModel", "Stations receiving error", e)
-                        error.value = true
-                        loading.value = false
+                        stations.value = ViewModelResult(arrayListOf(), loading = false, error = true)
                     }
 
                 })

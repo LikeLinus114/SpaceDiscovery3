@@ -36,45 +36,40 @@ class BodiesSatellitesFragment: Fragment(), Injectable {
 
         viewModel.fetchBodiesAndSatellites()
         observeViewModel()
-        enableSpinner(true)
     }
 
     private fun observeViewModel() {
+        viewModel.celestialBodies.removeObservers(activity!!)
         viewModel.celestialBodies.observe(this, Observer { bodies ->
-            val preparedBodies = CelestialBodyService.prepareBodiesData(bodies)
-            bodiesAdapter.updateBodies(preparedBodies)
-            if (preparedBodies.isEmpty()) {
-                no_bodies_label.visibility = View.VISIBLE
-                no_bodies_image.visibility = View.VISIBLE
-            } else {
-                no_bodies_label.visibility = View.INVISIBLE
-                no_bodies_image.visibility = View.INVISIBLE
-            }
-        })
-        viewModel.loading.observe(this, Observer { loading ->
-            loading?.let { enableSpinner(it) }
-        })
-        viewModel.error.observe(this, Observer { error ->
-            error?.let {
-                if (it) {
+            when {
+                bodies.loading -> {
+                    loading_spinner.visibility = View.VISIBLE
+                    shadow_view.visibility = View.VISIBLE
+                    no_bodies_label.visibility = View.GONE
+                    no_bodies_image.visibility = View.GONE
+                }
+                bodies.error -> {
+                    loading_spinner.visibility = View.GONE
+                    shadow_view.visibility = View.GONE
                     no_bodies_label.visibility = View.VISIBLE
                     no_bodies_image.visibility = View.VISIBLE
                     Toast.makeText(this.context, "could not load the celestial bodies info", Toast.LENGTH_SHORT).show()
                 }
+                else -> {
+                    val preparedBodies = CelestialBodyService.prepareBodiesData(bodies.data)
+                    bodiesAdapter.updateBodies(preparedBodies)
+                    loading_spinner.visibility = View.GONE
+                    shadow_view.visibility = View.GONE
+                    if (preparedBodies.isEmpty()) {
+                        no_bodies_label.visibility = View.VISIBLE
+                        no_bodies_image.visibility = View.VISIBLE
+                    } else {
+                        no_bodies_label.visibility = View.GONE
+                        no_bodies_image.visibility = View.GONE
+                    }
+                }
             }
         })
-    }
-
-    private fun enableSpinner(isEnabled: Boolean) {
-        if (isEnabled) {
-            loading_spinner.visibility = View.VISIBLE
-            shadow_view.visibility = View.VISIBLE
-            no_bodies_label.visibility = View.INVISIBLE
-            no_bodies_image.visibility = View.INVISIBLE
-        } else {
-            loading_spinner.visibility = View.GONE
-            shadow_view.visibility = View.GONE
-        }
     }
 
 }
