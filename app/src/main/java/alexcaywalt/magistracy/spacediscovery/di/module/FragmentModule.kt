@@ -1,9 +1,9 @@
 package alexcaywalt.magistracy.spacediscovery.di.module
 
-import alexcaywalt.magistracy.spacediscovery.bodies_and_satellites.BodiesSatellitesFragment
-import alexcaywalt.magistracy.spacediscovery.galaxy_map.GalaxyMapFragment
-import alexcaywalt.magistracy.spacediscovery.location.LocationFragment
-import alexcaywalt.magistracy.spacediscovery.stations.StationsFragment
+import alexcaywalt.magistracy.spacediscovery.main_functionality.bodies_and_satellites.BodiesSatellitesFragment
+import alexcaywalt.magistracy.spacediscovery.main_functionality.galaxy_map.GalaxyMapFragment
+import alexcaywalt.magistracy.spacediscovery.main_functionality.location.LocationFragment
+import alexcaywalt.magistracy.spacediscovery.main_functionality.stations.StationsFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

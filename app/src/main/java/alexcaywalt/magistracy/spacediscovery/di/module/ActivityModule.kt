@@ -1,6 +1,6 @@
 package alexcaywalt.magistracy.spacediscovery.di.module
 
-import alexcaywalt.magistracy.spacediscovery.chat.ChatListActivity
+import alexcaywalt.magistracy.spacediscovery.main_functionality.chat.ChatListActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
