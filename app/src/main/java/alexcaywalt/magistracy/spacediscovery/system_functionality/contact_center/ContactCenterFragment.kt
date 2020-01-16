@@ -23,6 +23,16 @@ class ContactCenterFragment: Fragment() {
             val intent = Intent(activity!!, SelectProblemActivity::class.java)
             activity!!.startActivity(intent)
         }
+        proposals_and_suggestions.setOnClickListener {
+            val intent = Intent(activity!!, MessageActivity::class.java)
+            intent.putExtra("messageType", 2)
+            activity!!.startActivity(intent)
+        }
+        leave_feedback.setOnClickListener {
+            val intent = Intent(activity!!, MessageActivity::class.java)
+            intent.putExtra("messageType", 3)
+            activity!!.startActivity(intent)
+        }
     }
 
 }

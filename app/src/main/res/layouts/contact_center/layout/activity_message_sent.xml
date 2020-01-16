@@ -28,52 +28,31 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-            android:id="@+id/report_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Describe your problem:"
-            android:textColor="@color/colorYellow"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/report_message"
-            app:layout_constraintTop_toBottomOf="@id/problem_type_image" />
-
-    <EditText
-            android:id="@+id/report_message"
+            android:id="@+id/message_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@color/cardview_light_background"
-            android:hint="Write a message..."
-            android:padding="5dp"
-            android:textSize="15dp"
-            app:layout_constraintTop_toBottomOf="@+id/report_label"
-            tools:layout_editor_absoluteX="16dp" />
-
-    <Button
-            android:id="@+id/submit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/button2_selector"
-            android:text="submit"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:gravity="center"
+            android:text="Your report has been sent!\nWe will answer you as soon as possible."
             android:textColor="@color/colorYellow"
+            android:textSize="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/report_message" />
+            app:layout_constraintTop_toBottomOf="@id/problem_type_image" />
 
     <Button
-            android:id="@+id/clear"
-            android:layout_width="wrap_content"
+            android:id="@+id/ok_button"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/button2_selector"
-            android:text="clear"
+            android:text="Ok"
+            android:textSize="24dp"
             android:textColor="@color/colorYellow"
-            android:layout_marginStart="10dp"
-            app:layout_constraintStart_toEndOf="@+id/submit"
-            app:layout_constraintTop_toTopOf="@+id/submit" />
+            app:layout_constraintTop_toBottomOf="@+id/message_label" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

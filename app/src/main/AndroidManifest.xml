@@ -34,10 +34,10 @@
                 android:name=".system_functionality.contact_center.SelectProblemActivity">
         </activity>
         <activity
-                android:name=".system_functionality.contact_center.ReportActivity">
+                android:name=".system_functionality.contact_center.MessageActivity">
         </activity>
         <activity
-                android:name=".system_functionality.contact_center.ReportSentActivity">
+                android:name=".system_functionality.contact_center.MessageSentActivity">
         </activity>
     </application>
 </manifest>

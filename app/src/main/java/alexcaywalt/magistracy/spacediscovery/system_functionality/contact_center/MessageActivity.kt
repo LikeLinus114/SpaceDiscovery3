@@ -9,25 +9,38 @@ import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_report.*
-import kotlinx.android.synthetic.main.activity_report.clear
-import kotlinx.android.synthetic.main.activity_report.submit
-import kotlinx.android.synthetic.main.activity_select_problem.toolbar
+import kotlinx.android.synthetic.main.activity_message.*
 
-class ReportActivity: AppCompatActivity() {
+class MessageActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_report)
+        setContentView(R.layout.activity_message)
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
 
-        problem_type_image.setImageResource(Shared.currentProblemImageResource)
+        message_type_image.setImageResource(Shared.currentMessageImageResource)
 
+        val messageType = intent.getIntExtra("messageType", 3)
+        when (messageType) {
+            1 -> {
+                toolbar.title = "Report"
+                message_label.text = "Describe your problem:"
+            }
+            2 -> {
+                toolbar.title = "Suggestion"
+                message_label.text = "Describe your suggestion:"
+            }
+            else -> {
+                toolbar.title = "Feedback"
+                message_label.text = "Your opinion:"
+            }
+        }
         submit.setOnClickListener {
-            val result = if (report_message.text.isNotEmpty()) {
-                val intent = Intent(this, ReportSentActivity::class.java)
+            val result = if (message.text.isNotEmpty()) {
+                val intent = Intent(this, MessageSentActivity::class.java)
+                intent.putExtra("messageType", messageType)
                 startActivity(intent)
                 "The message has been sent successfully"
             } else {
@@ -36,10 +49,10 @@ class ReportActivity: AppCompatActivity() {
             Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
             clear.performClick()
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(report_message.windowToken, 0)
+            imm.hideSoftInputFromWindow(message.windowToken, 0)
         }
         clear.setOnClickListener {
-            report_message.text.clear()
+            message.text.clear()
         }
     }
 

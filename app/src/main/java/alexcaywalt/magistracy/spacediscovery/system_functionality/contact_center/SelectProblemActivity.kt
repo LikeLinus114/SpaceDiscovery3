@@ -26,8 +26,9 @@ class SelectProblemActivity: AppCompatActivity() {
 
     private fun openReportActivity(button: View, problemImageResource: Int) {
         button.setOnClickListener {
-            Shared.currentProblemImageResource = problemImageResource
-            val intent = Intent(this, ReportActivity::class.java)
+            Shared.currentMessageImageResource = problemImageResource
+            val intent = Intent(this, MessageActivity::class.java)
+            intent.putExtra("messageType", 1)
             startActivity(intent)
         }
     }
