@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="Space Discovery" />
+            app:title="Report" />
 
     <TextView
             android:id="@+id/select_problem_label"
@@ -50,6 +50,7 @@
                     android:layout_height="match_parent">
 
                 <Button
+                        android:id="@+id/location_problem"
                         android:background="@drawable/problem_selector"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
@@ -68,6 +69,7 @@
                     android:layout_height="match_parent">
 
                 <Button
+                        android:id="@+id/map_problem"
                         android:background="@drawable/problem_selector"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
@@ -94,6 +96,7 @@
                     android:layout_height="match_parent">
 
                 <Button
+                        android:id="@+id/celestial_bodies_problem"
                         android:background="@drawable/problem_selector"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
@@ -112,6 +115,7 @@
                     android:layout_height="match_parent">
 
                 <Button
+                        android:id="@+id/stations_problem"
                         android:background="@drawable/problem_selector"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
