@@ -3,6 +3,7 @@ package alexcaywalt.magistracy.spacediscovery.system_functionality.contact_cente
 import alexcaywalt.magistracy.spacediscovery.R
 import alexcaywalt.magistracy.spacediscovery.Shared
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
@@ -26,6 +27,8 @@ class ReportActivity: AppCompatActivity() {
 
         submit.setOnClickListener {
             val result = if (report_message.text.isNotEmpty()) {
+                val intent = Intent(this, ReportSentActivity::class.java)
+                startActivity(intent)
                 "The message has been sent successfully"
             } else {
                 "You did not enter a message"

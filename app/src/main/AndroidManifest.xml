@@ -36,5 +36,8 @@
         <activity
                 android:name=".system_functionality.contact_center.ReportActivity">
         </activity>
+        <activity
+                android:name=".system_functionality.contact_center.ReportSentActivity">
+        </activity>
     </application>
 </manifest>
