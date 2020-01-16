@@ -6,6 +6,7 @@ import alexcaywalt.magistracy.spacediscovery.Shared
 import alexcaywalt.magistracy.spacediscovery.main_functionality.stations.chat.models.Chat
 import android.content.Context
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -22,6 +23,9 @@ class ChatActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeButtonEnabled(true)
 
         interlocutor.text = Shared.currentStation!!.name
         station_image.setImageBitmap(Shared.currentStation!!.imageBitMap)
@@ -82,6 +86,15 @@ class ChatActivity: AppCompatActivity() {
         }
         db!!.close()
         super.finish()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return if (item!!.itemId == android.R.id.home) {
+            finish()
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }
     }
 
 }
