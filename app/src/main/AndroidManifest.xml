@@ -30,5 +30,8 @@
         <activity
                 android:name=".main_functionality.stations.chat.ChatActivity">
         </activity>
+        <activity
+                android:name=".system_functionality.contact_center.SelectProblemActivity">
+        </activity>
     </application>
 </manifest>

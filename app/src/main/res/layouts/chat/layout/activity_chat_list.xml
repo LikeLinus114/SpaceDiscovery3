@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="Space Discovery" />
+            app:title="Chat" />
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/chat_list"
