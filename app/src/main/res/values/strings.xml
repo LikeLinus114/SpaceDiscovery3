@@ -6,7 +6,6 @@
     <string name="nav_header_title">Welcome to the Space Discovery</string>
     <string name="nav_header_subtitle">space.discovery@rambler.ru</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="settings">Settings</string>
     <string name="action_update">Update</string>
     <string name="action_home">Home</string>
     <string name="action_logout">Log out</string>
@@ -15,11 +14,14 @@
 
     <string name="to_be_implemented">To be implemented</string>
 
-    <string name="locate_current_position">Locate the current position</string>
-    <string name="map_of_galaxy">The map of the galaxy</string>
-    <string name="celestial_bodies_and_satellites">Celestial bodies and satellites</string>
-    <string name="connect_to_stations">Connect to the nearest stations</string>
-    <string name="stations">Stations</string>
+    <string name="menu_locate_current_position">Locate the current position</string>
+    <string name="menu_map_of_galaxy">The map of the galaxy</string>
+    <string name="menu_celestial_bodies_and_satellites">Celestial bodies and satellites</string>
+    <string name="menu_connect_to_stations">Connect to the nearest stations</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_write_to_center">Write to the Space Discovery Center</string>
+    <string name="current_location">Current location</string>
+    <string name="galaxy_map">Galaxy map</string>
+    <string name="stations">Stations</string>
+    <string name="contact_center">Contact center</string>
 </resources>

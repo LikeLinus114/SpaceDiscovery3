@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import kotlinx.android.synthetic.main.app_bar_side_pane.*
 import kotlinx.android.synthetic.main.fragment_galaxy_map.*
 import java.lang.Exception
 import java.time.LocalDateTime
@@ -29,7 +30,7 @@ class GalaxyMapFragment: Fragment(), Injectable {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        activity!!.toolbar!!.title = resources.getString(R.string.galaxy_map)
         update_button.setOnClickListener {
             viewModel.fetchGalaxyMap()
             observeViewModel(savedInstanceState)
@@ -38,8 +39,8 @@ class GalaxyMapFragment: Fragment(), Injectable {
     }
 
     private fun observeViewModel(savedInstanceState: Bundle?) {
-        viewModel.galaxyMapElements.removeObservers(activity!!)
-        viewModel.galaxyMapElements.observe(activity!!, Observer { elements ->
+        viewModel.galaxyMapElements.removeObservers(this)
+        viewModel.galaxyMapElements.observe(this, Observer { elements ->
             when {
                 elements.loading -> {
                     update_request_status.text = "in processing"

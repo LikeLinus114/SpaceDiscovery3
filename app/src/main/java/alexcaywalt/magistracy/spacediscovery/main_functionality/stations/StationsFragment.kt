@@ -39,8 +39,8 @@ class StationsFragment: Fragment(), Injectable {
     }
 
     private fun observeViewModel() {
-        viewModel.stations.removeObservers(activity!!)
-        viewModel.stations.observe(activity!!, Observer { stations ->
+        viewModel.stations.removeObservers(this)
+        viewModel.stations.observe(this, Observer { stations ->
             when {
                 stations.loading -> {
                     loading_spinner.visibility = View.VISIBLE

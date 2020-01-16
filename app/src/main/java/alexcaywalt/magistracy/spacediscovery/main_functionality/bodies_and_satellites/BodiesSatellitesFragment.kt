@@ -29,7 +29,7 @@ class BodiesSatellitesFragment: Fragment(), Injectable {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity!!.toolbar!!.title = resources.getString(R.string.celestial_bodies_and_satellites)
+        activity!!.toolbar!!.title = resources.getString(R.string.menu_celestial_bodies_and_satellites)
         bodiesAdapter = CelestialBodiesAdapter(arrayListOf())
         bodies_list.layoutManager = LinearLayoutManager(activity!!.applicationContext)
         bodies_list.adapter = bodiesAdapter
@@ -39,7 +39,7 @@ class BodiesSatellitesFragment: Fragment(), Injectable {
     }
 
     private fun observeViewModel() {
-        viewModel.celestialBodies.removeObservers(activity!!)
+        viewModel.celestialBodies.removeObservers(this)
         viewModel.celestialBodies.observe(this, Observer { bodies ->
             when {
                 bodies.loading -> {

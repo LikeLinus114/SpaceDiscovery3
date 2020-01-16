@@ -7,19 +7,19 @@
         <item
                 android:id="@+id/locate_current_position"
                 android:icon="@drawable/ic_location"
-                android:title="@string/locate_current_position" />
+                android:title="@string/menu_locate_current_position" />
         <item
                 android:id="@+id/map_of_galaxy"
                 android:icon="@drawable/ic_map"
-                android:title="@string/map_of_galaxy"/>
+                android:title="@string/menu_map_of_galaxy"/>
         <item
                 android:id="@+id/celestial_bodies_and_satellites"
                 android:icon="@drawable/ic_planet"
-                android:title="@string/celestial_bodies_and_satellites"/>
+                android:title="@string/menu_celestial_bodies_and_satellites"/>
         <item
                 android:id="@+id/connect_to_stations"
                 android:icon="@drawable/ic_connection"
-                android:title="@string/connect_to_stations"/>
+                android:title="@string/menu_connect_to_stations"/>
     </group>
 
     <item android:title="System">

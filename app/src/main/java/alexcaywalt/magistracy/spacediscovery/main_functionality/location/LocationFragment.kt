@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import kotlinx.android.synthetic.main.app_bar_side_pane.*
 import kotlinx.android.synthetic.main.fragment_location.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -33,7 +34,7 @@ class LocationFragment: Fragment(), Injectable {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        activity!!.toolbar!!.title = resources.getString(R.string.current_location)
         if (successfulAttempts + failedAttempts > 0) {
             connection_rate.text = String.format("%d", (successfulAttempts / (successfulAttempts + failedAttempts) * 100))
         }
@@ -43,8 +44,8 @@ class LocationFragment: Fragment(), Injectable {
     }
 
     private fun observeViewModel(savedInstanceState: Bundle?) {
-        viewModel.systemMapElements.removeObservers(activity!!)
-        viewModel.systemMapElements.observe(activity!!, Observer { elements ->
+        viewModel.systemMapElements.removeObservers(this)
+        viewModel.systemMapElements.observe(this, Observer { elements ->
             when {
                 elements.loading -> {
                     loading_spinner.visibility = View.VISIBLE
