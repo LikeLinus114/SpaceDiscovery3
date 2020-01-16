@@ -8,7 +8,6 @@ import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.android.synthetic.main.activity_report.*
 import kotlinx.android.synthetic.main.activity_report.clear
 import kotlinx.android.synthetic.main.activity_report.submit
