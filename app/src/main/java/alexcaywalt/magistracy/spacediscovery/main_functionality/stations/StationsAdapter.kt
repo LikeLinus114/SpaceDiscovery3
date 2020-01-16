@@ -2,8 +2,8 @@ package alexcaywalt.magistracy.spacediscovery.main_functionality.stations
 
 import alexcaywalt.magistracy.spacediscovery.R
 import alexcaywalt.magistracy.spacediscovery.Shared
-import alexcaywalt.magistracy.spacediscovery.main_functionality.chat.ChatActivity
-import alexcaywalt.magistracy.spacediscovery.main_functionality.chat.ChatListActivity
+import alexcaywalt.magistracy.spacediscovery.main_functionality.stations.chat.ChatActivity
+import alexcaywalt.magistracy.spacediscovery.main_functionality.stations.chat.ChatListActivity
 import alexcaywalt.magistracy.spacediscovery.main_functionality.stations.models.Station
 import alexcaywalt.magistracy.spacediscovery.main_functionality.stations.models.StationTypeEnum
 import android.content.Intent

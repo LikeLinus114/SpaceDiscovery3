@@ -25,16 +25,10 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".main_functionality.chat.ChatListActivity">
+                android:name=".main_functionality.stations.chat.ChatListActivity">
         </activity>
         <activity
-                android:name=".main_functionality.chat.ChatActivity">
-        </activity>
-        <activity
-                android:name=".system_functionality.contact_center.ContactCenterActivity">
-        </activity>
-        <activity
-                android:name=".system_functionality.settings.SettingsActivity">
+                android:name=".main_functionality.stations.chat.ChatActivity">
         </activity>
     </application>
 </manifest>

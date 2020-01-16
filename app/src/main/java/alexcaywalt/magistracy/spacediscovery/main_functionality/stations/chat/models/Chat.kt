@@ -1,4 +1,4 @@
-package alexcaywalt.magistracy.spacediscovery.main_functionality.chat.models
+package alexcaywalt.magistracy.spacediscovery.main_functionality.stations.chat.models
 
 import alexcaywalt.magistracy.spacediscovery.main_functionality.stations.models.Message
 import alexcaywalt.magistracy.spacediscovery.main_functionality.stations.models.Station

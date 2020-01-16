@@ -1,10 +1,12 @@
 package alexcaywalt.magistracy.spacediscovery
 
 import alexcaywalt.magistracy.spacediscovery.main_functionality.bodies_and_satellites.BodiesSatellitesFragment
-import alexcaywalt.magistracy.spacediscovery.main_functionality.chat.ChatListActivity
+import alexcaywalt.magistracy.spacediscovery.main_functionality.stations.chat.ChatListActivity
 import alexcaywalt.magistracy.spacediscovery.main_functionality.galaxy_map.GalaxyMapFragment
 import alexcaywalt.magistracy.spacediscovery.main_functionality.location.LocationFragment
 import alexcaywalt.magistracy.spacediscovery.main_functionality.stations.StationsFragment
+import alexcaywalt.magistracy.spacediscovery.system_functionality.contact_center.ContactCenterFragment
+import alexcaywalt.magistracy.spacediscovery.system_functionality.settings.SettingsFragment
 import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -108,11 +110,11 @@ class SidePane : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
             R.id.connect_to_stations -> {
                 openSection(StationsFragment())
             }
-            R.id.nav_share -> {
-
+            R.id.settings -> {
+                openSection(SettingsFragment())
             }
-            R.id.nav_send -> {
-
+            R.id.contact_center -> {
+                openSection(ContactCenterFragment())
             }
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
