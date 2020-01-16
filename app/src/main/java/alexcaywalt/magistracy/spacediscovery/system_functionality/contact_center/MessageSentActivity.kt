@@ -37,4 +37,8 @@ class MessageSentActivity: AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        ok_button.performClick()
+    }
+
 }
