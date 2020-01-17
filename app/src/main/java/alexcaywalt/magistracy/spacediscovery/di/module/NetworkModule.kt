@@ -1,6 +1,6 @@
 package alexcaywalt.magistracy.spacediscovery.di.module
 
-import alexcaywalt.example.spacediscovery.di.interceptor.NetworkConnectionInterceptor
+import alexcaywalt.magistracy.spacediscovery.di.interceptor.NetworkConnectionInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable

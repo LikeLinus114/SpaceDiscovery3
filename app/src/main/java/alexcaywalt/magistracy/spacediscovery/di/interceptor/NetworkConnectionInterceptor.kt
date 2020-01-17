@@ -1,4 +1,4 @@
-package alexcaywalt.example.spacediscovery.di.interceptor
+package alexcaywalt.magistracy.spacediscovery.di.interceptor
 
 import okhttp3.Interceptor
 import okhttp3.Response
