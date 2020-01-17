@@ -1,5 +1,6 @@
 package alexcaywalt.magistracy.spacediscovery.system_functionality.contact_center
 
+import alexcaywalt.magistracy.spacediscovery.MESSAGE_TYPE
 import alexcaywalt.magistracy.spacediscovery.R
 import alexcaywalt.magistracy.spacediscovery.Shared
 import android.content.Context
@@ -22,29 +23,29 @@ class MessageActivity: AppCompatActivity() {
 
         message_type_image.setImageResource(Shared.currentMessageImageResource)
 
-        val messageType = intent.getIntExtra("messageType", 3)
+        val messageType = intent.getIntExtra(MESSAGE_TYPE, 3)
         when (messageType) {
             1 -> {
-                toolbar.title = "Report"
-                message_label.text = "Describe your problem:"
+                toolbar.title = resources.getString(R.string.report)
+                message_label.text = resources.getString(R.string.report_describe)
             }
             2 -> {
-                toolbar.title = "Suggestion"
-                message_label.text = "Describe your suggestion:"
+                toolbar.title = resources.getString(R.string.suggestion)
+                message_label.text = resources.getString(R.string.suggestion_describe)
             }
             else -> {
-                toolbar.title = "Feedback"
-                message_label.text = "Your opinion:"
+                toolbar.title = resources.getString(R.string.feedback)
+                message_label.text = resources.getString(R.string.feedback_describe)
             }
         }
         submit.setOnClickListener {
             val result = if (message.text.isNotEmpty()) {
                 val intent = Intent(this, MessageSentActivity::class.java)
-                intent.putExtra("messageType", messageType)
+                intent.putExtra(MESSAGE_TYPE, messageType)
                 startActivity(intent)
-                "The message has been sent successfully"
+                resources.getString(R.string.message_sent_successfully)
             } else {
-                "You did not enter a message"
+                resources.getString(R.string.message_empty)
             }
             Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
             clear.performClick()

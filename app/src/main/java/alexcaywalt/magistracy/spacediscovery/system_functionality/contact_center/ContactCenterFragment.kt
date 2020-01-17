@@ -1,5 +1,6 @@
 package alexcaywalt.magistracy.spacediscovery.system_functionality.contact_center
 
+import alexcaywalt.magistracy.spacediscovery.MESSAGE_TYPE
 import alexcaywalt.magistracy.spacediscovery.R
 import android.content.Intent
 import android.os.Bundle
@@ -25,12 +26,12 @@ class ContactCenterFragment: Fragment() {
         }
         proposals_and_suggestions.setOnClickListener {
             val intent = Intent(activity!!, MessageActivity::class.java)
-            intent.putExtra("messageType", 2)
+            intent.putExtra(MESSAGE_TYPE, 2)
             activity!!.startActivity(intent)
         }
         leave_feedback.setOnClickListener {
             val intent = Intent(activity!!, MessageActivity::class.java)
-            intent.putExtra("messageType", 3)
+            intent.putExtra(MESSAGE_TYPE, 3)
             activity!!.startActivity(intent)
         }
     }

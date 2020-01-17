@@ -53,7 +53,7 @@ class BodiesSatellitesFragment: Fragment(), Injectable {
                     shadow_view.visibility = View.GONE
                     no_bodies_label.visibility = View.VISIBLE
                     no_bodies_image.visibility = View.VISIBLE
-                    Toast.makeText(this.context, "could not load the celestial bodies info", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this.context, resources.getString(R.string.could_not_load_bodies), Toast.LENGTH_SHORT).show()
                 }
                 else -> {
                     val preparedBodies = CelestialBodyService.prepareBodiesData(bodies.data)

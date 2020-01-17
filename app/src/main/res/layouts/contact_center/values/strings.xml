@@ -1,0 +1,16 @@
+<resources>
+    <string name="report">Report</string>
+    <string name="suggestion">Suggestion</string>
+    <string name="feedback">Feedback</string>
+
+    <string name="report_sent">Your report has been sent!\nWe will answer you as soon as possible.</string>
+    <string name="suggestion_sent">Your suggestion has been sent!\nWe will answer you as soon as possible.</string>
+    <string name="feedback_sent">Your feedback has been sent!\nThanks!</string>
+
+    <string name="report_describe">Describe your problem:</string>
+    <string name="suggestion_describe">Describe your suggestion:</string>
+    <string name="feedback_describe">Your opinion:</string>
+
+    <string name="message_sent_successfully">The message has been sent successfully</string>
+    <string name="message_empty">You did not enter a message</string>
+</resources>

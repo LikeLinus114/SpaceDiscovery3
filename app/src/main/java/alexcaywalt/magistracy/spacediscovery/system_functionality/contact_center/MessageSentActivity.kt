@@ -1,5 +1,6 @@
 package alexcaywalt.magistracy.spacediscovery.system_functionality.contact_center
 
+import alexcaywalt.magistracy.spacediscovery.MESSAGE_TYPE
 import alexcaywalt.magistracy.spacediscovery.R
 import alexcaywalt.magistracy.spacediscovery.Shared
 import alexcaywalt.magistracy.spacediscovery.SidePane
@@ -14,18 +15,18 @@ class MessageSentActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_message_sent)
 
-        when (intent.getIntExtra("messageType", 3)) {
+        when (intent.getIntExtra(MESSAGE_TYPE, 3)) {
             1 -> {
-                toolbar.title = "Report"
-                message_label.text = "Your report has been sent!\nWe will answer you as soon as possible."
+                toolbar.title = resources.getString(R.string.report)
+                message_label.text = resources.getString(R.string.report_sent)
             }
             2 -> {
-                toolbar.title = "Suggestion"
-                message_label.text = "Your suggestion has been sent!\nWe will answer you as soon as possible."
+                toolbar.title = resources.getString(R.string.suggestion)
+                message_label.text = resources.getString(R.string.suggestion_sent)
             }
             else -> {
-                toolbar.title = "Feedback"
-                message_label.text = "Your feedback has been sent!\nThanks!"
+                toolbar.title = resources.getString(R.string.feedback)
+                message_label.text = resources.getString(R.string.feedback_sent)
             }
         }
 

@@ -1,5 +1,6 @@
 package alexcaywalt.magistracy.spacediscovery.system_functionality.contact_center
 
+import alexcaywalt.magistracy.spacediscovery.MESSAGE_TYPE
 import alexcaywalt.magistracy.spacediscovery.R
 import alexcaywalt.magistracy.spacediscovery.Shared
 import android.content.Intent
@@ -28,7 +29,7 @@ class SelectProblemActivity: AppCompatActivity() {
         button.setOnClickListener {
             Shared.currentMessageImageResource = problemImageResource
             val intent = Intent(this, MessageActivity::class.java)
-            intent.putExtra("messageType", 1)
+            intent.putExtra(MESSAGE_TYPE, 1)
             startActivity(intent)
         }
     }

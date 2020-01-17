@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="in_processing">in processing</string>
+    <string name="could_not_update">could not update</string>
+    <string name="updated_successfully">updated successfully</string>
+    <string name="could_not_load_galaxy_map">could not load the galaxy map</string>
+</resources>

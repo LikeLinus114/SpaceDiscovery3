@@ -43,7 +43,7 @@ class GalaxyMapFragment: Fragment(), Injectable {
         viewModel.galaxyMapElements.observe(this, Observer { elements ->
             when {
                 elements.loading -> {
-                    update_request_status.text = "in processing"
+                    update_request_status.text = resources.getString(R.string.in_processing)
                     update_request_status.setTextColor(resources.getColor(R.color.colorYellow, resources.newTheme()))
                     update_button.isEnabled = false
                     update_button.setTextColor(resources.getColor(R.color.colorYellowDark, resources.newTheme()))
@@ -51,13 +51,13 @@ class GalaxyMapFragment: Fragment(), Injectable {
                     shadow_view.visibility = View.VISIBLE
                 }
                 elements.error -> {
-                    update_request_status.text = "could not update"
+                    update_request_status.text = resources.getString(R.string.could_not_update)
                     update_request_status.setTextColor(resources.getColor(R.color.colorRed, resources.newTheme()))
                     update_button.isEnabled = true
                     update_button.setTextColor(resources.getColor(R.color.colorYellow, resources.newTheme()))
                     loading_spinner.visibility = View.GONE
                     shadow_view.visibility = View.GONE
-                    Toast.makeText(this.context, "could not load the galaxy map", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this.context, resources.getString(R.string.could_not_load_galaxy_map), Toast.LENGTH_SHORT).show()
                     SpaceMap(
                         map_view,
                         savedInstanceState != null,
@@ -74,7 +74,7 @@ class GalaxyMapFragment: Fragment(), Injectable {
                             savedInstanceState != null,
                             context!!.getExternalFilesDir(null)!!.absolutePath + "/galaxy_map"
                         )
-                        update_request_status.text = "updated successfully"
+                        update_request_status.text = resources.getString(R.string.updated_successfully)
                         update_request_status.setTextColor(resources.getColor(R.color.colorGreen, resources.newTheme()))
                         update_button.isEnabled = true
                         update_button.setTextColor(resources.getColor(R.color.colorYellow, resources.newTheme()))
